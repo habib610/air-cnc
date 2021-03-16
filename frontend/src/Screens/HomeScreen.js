@@ -43,6 +43,7 @@ const HomeScreen = ({history}) => {
                 </Col>
                <Col className="mb-4">
                     <h2>Homes</h2>
+                    <h2>Master adding</h2>
                     <Row className="experience">
                     {
                         homes.map(trip => <Col xs={12} sm={12}  md={4}  key={trip._id}  >
