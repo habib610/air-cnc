@@ -1,20 +1,20 @@
 import './App.css';
-import data from './data';
-import {useState} from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import './bootstrap.min.css'
 import Header from './components/Header';
 import HomeScreen from './Screens/HomeScreen';
+import { BrowserRouter,  Route } from 'react-router-dom';
+import DetailsScreen from './Screens/DetailsScreen';
 
 function App() {
-    const [myArray, setMyArray] = useState(data)
+
     return (
-    <>
+    <BrowserRouter>
      <Header />
      <main>
-       <HomeScreen/>
+       <Route path="/" exact component={HomeScreen} />
+       <Route path="/details/:id" component={DetailsScreen} />
      </main>
-    </>
+    </BrowserRouter>
   );
 }
 

@@ -4,10 +4,13 @@ import FilterSidebar from '../components/FilterSidebar';
 import Rating from '../components/Rating';
 import data from '../data';
 
-const HomeScreen = () => {
+const HomeScreen = ({history}) => {
     const [trips, setTrips] = useState(data.slice(0, 4))
     const [homes, setHomes] = useState(data.slice(4))
-
+   
+    const cardClick = (id) => {
+        history.push(`/details/${id}`)
+    }
     return (
         <Container fluid>
             <Row>
@@ -25,7 +28,7 @@ const HomeScreen = () => {
                     <Row className="experience">
                     {
                         trips.map(trip => <Col xs={12} sm={12}  md={6} lg={3} key={trip._id}  >
-                            <Card>
+                            <Card onClick={()=> cardClick(trip._id)} >
                                 <Card.Img variant="top" src={trip.thumbnail} />
                                 <Card.Body className="p-1">
                                 <h6 className="place">{trip.place}</h6>
@@ -43,7 +46,7 @@ const HomeScreen = () => {
                     <Row className="experience">
                     {
                         homes.map(trip => <Col xs={12} sm={12}  md={4}  key={trip._id}  >
-                            <Card>
+                            <Card onClick={()=> cardClick(trip._id)}>
                                 <Card.Img variant="top" src={trip.thumbnail} />
                                 <Card.Body className="p-1">
                                 <h6 className="place">{trip.place}</h6>
