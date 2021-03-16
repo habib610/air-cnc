@@ -14,6 +14,9 @@ function App() {
        <Route path="/" exact component={HomeScreen} />
        <Route path="/details/:id" component={DetailsScreen} />
      </main>
+     <footer className="text-center py-3 bg-success mt-5">
+       <p className="mb-0"><small>All right Reserved &copy; Habib610</small></p>
+     </footer>
     </BrowserRouter>
   );
 }

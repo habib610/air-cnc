@@ -42,13 +42,13 @@ const FilterSidebar = () => {
         <Card className="border-rounded">
           <Card.Body className="px-2 py-3  ">
             <Row>
-              <Col className="mx-4">
-                <p className="text-secondary small p-0 m-0">Arrival</p>
+              <Col className="mx-1">
+                <p className="text-secondary small p-0 m-0"><small>Arrival</small></p>
                 <p className="mb-0">
-                  <strong>24/04/2020</strong>
+                24/04/2020
                 </p>
               </Col>
-              <Col className="ml-2">
+              <Col className="ml-1">
                 <FontAwesomeIcon className="fa-2x" icon={faCalendarAlt} />
               </Col>
             </Row>
@@ -59,13 +59,13 @@ const FilterSidebar = () => {
         <Card>
           <Card.Body className="px-2 py-3">
             <Row>
-              <Col className="mx-4">
-                <p className="text-secondary small p-0 m-0">Departure</p>
+              <Col className="mx-1">
+                <p className="text-secondary small p-0 m-0"><small>Departure</small></p>
                 <p className="mb-0">
-                  <strong>24/04/2020</strong>
+                  24/04/2020
                 </p>
               </Col>
-              <Col>
+              <Col className="ml-1">
                 <FontAwesomeIcon className="fa-2x" icon={faCalendarAlt} />
               </Col>
             </Row>
@@ -157,7 +157,7 @@ const FilterSidebar = () => {
             </Accordion.Collapse>
           </Card>
         </Accordion>
-        <Button variant="block btn-success my-2 py-3 rounded-1">
+        <Button variant="block btn-success my-2 py-3 rounded-pill">
           <FontAwesomeIcon icon={faSearch} /> Search
         </Button>
       </Col>

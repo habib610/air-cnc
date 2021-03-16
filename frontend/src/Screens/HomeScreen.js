@@ -30,10 +30,11 @@ const HomeScreen = ({history}) => {
                         trips.map(trip => <Col xs={12} sm={12}  md={6} lg={3} key={trip._id}  >
                             <Card onClick={()=> cardClick(trip._id)} >
                                 <Card.Img variant="top" src={trip.thumbnail} />
-                                <Card.Body className="p-1">
+                                <Card.Body className="py-0 px-2">
+                                    
                                 <h6 className="place">{trip.place}</h6>
-                                    <h5>{trip.name}</h5>
-                                    <p>$ <strong>{trip.perPerson}</strong>  per person</p>
+                                    <h5 className="text-success">{trip.name}</h5>
+                                    <p>$ <strong>{trip.perPerson}</strong>  <small>per person</small></p>
                                     <Rating rating={trip.rating} reviews={trip.numReviews} />
                                     </Card.Body>
                             </Card>
@@ -43,7 +44,6 @@ const HomeScreen = ({history}) => {
                 </Col>
                <Col className="mb-4">
                     <h2>Homes</h2>
-                    <h2>Master adding</h2>
                     <Row className="experience">
                     {
                         homes.map(trip => <Col xs={12} sm={12}  md={4}  key={trip._id}  >
@@ -51,8 +51,8 @@ const HomeScreen = ({history}) => {
                                 <Card.Img variant="top" src={trip.thumbnail} />
                                 <Card.Body className="p-1">
                                 <h6 className="place">{trip.place}</h6>
-                                    <h5>{trip.name}</h5>
-                                    <p>$ <strong>{trip.perPerson}</strong>  per person</p>
+                                <Card.Title>{trip.name}</Card.Title>
+                                    <p>$ <strong>{trip.perPerson}</strong>  <small>per person</small></p>
                                     <Rating rating={trip.rating} reviews={trip.numReviews} superhost=" - superhost" /> 
                                     </Card.Body>
                             </Card>
