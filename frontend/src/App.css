@@ -1,0 +1,38 @@
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700 !important;
+    color: #484848 ;
+}
+.btn-success{
+    background: linear-gradient(126deg, #2bde8c, #86f244) !important;
+    border-bottom: none !important;
+    padding: 8px 25px !important;
+    border-radius: 20px !important;
+}
+.card{
+    border: none !important;
+}
+
+.card-body{
+    box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.1) !important;
+    border-radius: 10px !important;
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) .5s !important;
+}
+.card:hover{
+    box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.1) !important;
+    cursor: pointer;
+}
+.experience .card-body{
+    min-height: 157px;
+}
+.card:hover .place{
+    color: #00A799;
+}
+
+
+
+
+p{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400 !important; 
+}
