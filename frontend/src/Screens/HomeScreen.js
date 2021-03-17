@@ -1,16 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import FilterSidebar from '../components/FilterSidebar';
 import Rating from '../components/Rating';
 import data from '../data';
+import axios from 'axios';
+
 
 const HomeScreen = ({history}) => {
     const [trips, setTrips] = useState(data.slice(0, 4))
     const [homes, setHomes] = useState(data.slice(4))
-   
     const cardClick = (id) => {
         history.push(`/details/${id}`)
     }
+    useEffect(()=>{
+        const getTrips = async() => {
+            try{
+                const {data} = await axios.get("/api/trips")
+                console.log(data)
+            } catch(error){
+                console.log(error)
+            }
+        }
+        getTrips()
+    }, [])
+    
     return (
         <Container fluid>
             <Row>

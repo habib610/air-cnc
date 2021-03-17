@@ -83,7 +83,7 @@ const DetailsScreen = ({ match }) => {
             </p>
             <Row className="my-1">
               <Col md={1}>
-                <FontAwesomeIcon icon={faHome} className="fa-2x" />
+                <FontAwesomeIcon icon={faHome} className="fa-2x success" />
               </Col>
               <Col md={11}>
                 <p className="text-secondary mb-0">Entire Home</p>
@@ -94,7 +94,7 @@ const DetailsScreen = ({ match }) => {
             </Row>
             <Row className="my-1">
               <Col md={1}>
-                <FontAwesomeIcon icon={faCheck} className="fa-2x" />
+                <FontAwesomeIcon icon={faCheck} className="fa-2x success" />
               </Col>
               <Col md={11}>
                 <p className="text-secondary mb-0">Self check-in</p>
@@ -103,7 +103,7 @@ const DetailsScreen = ({ match }) => {
             </Row>
             <Row className="my-1">
               <Col md={1}>
-                <FontAwesomeIcon icon={faHandSparkles} className="fa-2x" />
+                <FontAwesomeIcon icon={faHandSparkles} className="fa-2x success" />
               </Col>
               <Col md={11}>
                 <p className="text-secondary mb-0 ">Sparkling Clean</p>
@@ -114,7 +114,7 @@ const DetailsScreen = ({ match }) => {
             </Row>
             <Row className="my-1">
               <Col md={1}>
-                <FontAwesomeIcon icon={faUser} className="fa-2x" />
+                <FontAwesomeIcon icon={faUser} className="fa-2x success" />
               </Col>
               <Col md={11}>
                 <p className="text-secondary mb-0">
