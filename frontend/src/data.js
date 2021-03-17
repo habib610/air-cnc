@@ -139,7 +139,7 @@ const data = [
         numReviews: 0,
         rating: 0,
         place: "NightLife - New York",
-        category: "experiences",
+        category: "homes",
         thumbnail: "/images/pirate.png",
         frontView: "/images/out7.jpg",
         innerView: "/images/int7.jpg",
