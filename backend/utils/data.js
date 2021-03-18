@@ -1,6 +1,21 @@
-const data = [
+const data =  {
+    allUsers: [
+        {
+        name: "user1",
+        email: "user1@example.com",
+        isAdmin: false,
+        password: "123456"
+        },
+        {
+        name: "admin",
+        email: "admin1@example.com",
+        isAdmin: true,
+        password: "123456"
+        },
+    ],
+    allTrips: [
     {
-        _id: 1,
+
         name: "Discover the city's party scene",
         perPerson: 35,
         total: 167,
@@ -22,7 +37,7 @@ const data = [
         description: "It’s newly constructed 7 storied building maintaining building code by a locally famous architect. Enough lights and natural air are playing here. The place (apartment) is calm and noise free You’ll love my place for its lovely and bright looks comfortable stayBangladesh is a beauty with its six seasons and green. The people are hospitable and worm.It’s newly constructed 7 storied building maintaining building code by a locally famous architect. Enough lights and natural air are playing here. The place (apartment) is calm and noise free. You’ll love my place for its lovely and bright looks comfortable stay.Bangladesh is a beauty with its six seasons and green. The people are hospitable and worm"
     },
     {
-        _id: 2,
+
         name: "Tour with an Enthusiastic Local",
         perPerson: 3,
         total: 77,
@@ -44,7 +59,7 @@ const data = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dignissimos iure neque dolore natus hic repellendus sit nulla cum illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore cum minima a aspernatur eos asperiores earum aliquam distinctio iste maiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Id quidem ea consequatur magnam deserunt, ducimus tempore, nemo omnis, dignissimos praesentium porro beatae debitis labore numquam aliquam voluptates doloremque tempora eius?"
     },
     {
-        _id: 3,
+
         name: "Retro Photos",
         perPerson: 49,
         total: 137,
@@ -66,7 +81,7 @@ const data = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, illum praesentium veniam qui odio, dolore quasi minima vero tempore neque at animi delectus id eos pariatur nostrum dolorem consequatur deserunt officia nesciunt ex voluptates asperiores, officiis dolores. Aliquam consequuntur, dolore facere animi provident similique ullam?"
     },
     {
-        _id: 4,
+
         name: "Must Have L.A Pictures!",
         perPerson: 35,
         total: 51,
@@ -88,7 +103,7 @@ const data = [
         description: "It’s newly constructed 7 storied building maintaining building code by a locally famous architect. Enough lights and natural air are playing here. The place (apartment) is calm and noise free You’ll love my place for its lovely and bright looks comfortable stayBangladesh is a beauty with its six seasons and green. The people are hospitable and worm.It’s newly constructed 7 storied building maintaining building code by a locally famous architect. Enough lights and natural air are playing here. The place (apartment) is calm and noise free. You’ll love my place for its lovely and bright looks comfortable stay.Bangladesh is a beauty with its six seasons and green. The people are hospitable and worm"
     },
     {
-        _id: 5,
+
         name: "Unique Cob Cottage",
         perPerson: 128,
         total: 284,
@@ -110,7 +125,7 @@ const data = [
         description: "It’s newly constructed 7 storied building maintaining building code by a locally famous architect. Enough lights and natural air are playing here. The place (apartment) is calm and noise free You’ll love my place for its lovely and bright looks comfortable stayBangladesh is a beauty with its six seasons and green. The people are hospitable and worm.It’s newly constructed 7 storied building maintaining building code by a locally famous architect. Enough lights and natural air are playing here. The place (apartment) is calm and noise free. You’ll love my place for its lovely and bright looks comfortable stay.Bangladesh is a beauty with its six seasons and green. The people are hospitable and worm"
     },
     {
-        _id: 6,
+
         name: "The Joshua Tree House",
         perPerson: 250,
         total: 381,
@@ -132,7 +147,7 @@ const data = [
         description: "It’s newly constructed 7 storied building maintaining building code by a locally famous architect. Enough lights and natural air are playing here. The place (apartment) is calm and noise free You’ll love my place for its lovely and bright looks comfortable stayBangladesh is a beauty with its six seasons and green. The people are hospitable and worm.It’s newly constructed 7 storied building maintaining building code by a locally famous architect. Enough lights and natural air are playing here. The place (apartment) is calm and noise free. You’ll love my place for its lovely and bright looks comfortable stay.Bangladesh is a beauty with its six seasons and green. The people are hospitable and worm"
     },
     {
-        _id: 7,
+
         name: "A Pirate's Life For Me - Houseboat!",
         perPerson: 35,
         total: 259,
@@ -154,5 +169,6 @@ const data = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloremque laboriosam saepe doloribus et cupiditate omnis eligendi ratione error perferendis, iure numquam amet dicta optio modi harum assumenda ab sit maxime ut aperiam dolore earum voluptatem fugit! Culpa commodi, nesciunt voluptates natus quidem vitae omnis maxime incidunt eum illum distinctio tenetur ab? Velit, saepe. Debitis, dolor atque alias sapiente quis ea modi corporis. Quo atque porro sit provident dolore quam at laborum ex ipsam repellat earum repudiandae libero eos commodi cum fuga nesciunt veniam, est facere. At labore fugiat, quas, itaque atque, ipsa nostrum ab sequi tempore aliquam tempora mollitia."
     },
 ]
+}
 
 export default data;

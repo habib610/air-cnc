@@ -4,7 +4,7 @@ import { LIST_TRIP_FAIL, LIST_TRIP_REQUEST, LIST_TRIP_SUCCESS } from "../Constan
 export const listTripActions = () => async(dispatch) => {
     dispatch({type: LIST_TRIP_REQUEST})
     try{
-        const {data} = await axios.get('/api/trips')
+        const {data} = await axios.get('/api/trips/')
         dispatch({type: LIST_TRIP_SUCCESS, payload: data})
 
     } catch (error) {
