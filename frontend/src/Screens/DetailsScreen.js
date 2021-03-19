@@ -7,7 +7,9 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Calendar from 'react-calendar';
+import "react-datepicker/dist/react-datepicker.css";
 import {
   Button,
   Card,
@@ -18,13 +20,16 @@ import {
   ListGroup,
   Row,
 } from "react-bootstrap";
-
+import DatePicker from "react-datepicker";
 import { useDispatch, useSelector } from "react-redux";
 import { detailTripAction } from "../Actions/tripActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-
+import 'react-calendar/dist/Calendar.css';
 const DetailsScreen = ({ match }) => {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
   const tripId = match.params.id;
   const dispatch = useDispatch();
 
@@ -34,7 +39,10 @@ const DetailsScreen = ({ match }) => {
 
   const singleTrip = useSelector((state) => state.singleTrip);
   const { error, loading, trip } = singleTrip;
- 
+
+
+
+
   return (
     <Container fluid>
       {loading ? (
@@ -146,9 +154,16 @@ const DetailsScreen = ({ match }) => {
                     <Form>
                       <Form.Text>Date</Form.Text>
                       <Form.Group>
-                      {/* <Form.Control size="lg">
-                      <FontAwesomeIcon icon={faArrowRight} />{" "}
-                      </Form.Control> */}
+      
+                      
+                      <Form.Text>From</Form.Text>
+                      <Form.Group>
+                          <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                      </Form.Group>
+                      <Form.Text>To</Form.Text>
+                      <Form.Group>
+                          <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
+                      </Form.Group>
                       <Form.Text>Guest</Form.Text>
                       <Form.Control as="select" size="lg">
                         <option>3 Guest</option>
