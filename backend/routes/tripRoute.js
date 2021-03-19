@@ -14,12 +14,28 @@ tripsRouter.get(
   })
 );
 
-
+//load all trips
 tripsRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
     const allTrips = await Trips.find({});
     res.status(200).json(allTrips);
+  })
+);
+
+// load trips by id
+tripsRouter.get(
+  "/:id",
+  expressAsyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const singleTrip = await Trips.findById(id)
+
+    if(singleTrip){
+      res.status(200).json(singleTrip)
+    }
+    else{
+      res.status(404).send({message: "Trip Not Found"})
+    }
   })
 );
 

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import FilterSidebar from '../components/FilterSidebar';
 import Rating from '../components/Rating';
-import data from '../data';
-import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux'
 import { listTripActions } from '../Actions/tripActions';
 import Loader from '../components/Loader';

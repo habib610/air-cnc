@@ -2,6 +2,9 @@ import {
   LIST_TRIP_FAIL,
   LIST_TRIP_REQUEST,
   LIST_TRIP_SUCCESS,
+  DETAIL_TRIP_FAIL,
+  DETAIL_TRIP_REQUEST,
+  DETAIL_TRIP_SUCCESS,
 } from "../Constants/tripConstants";
 
 export const tripReducer = (
@@ -30,3 +33,16 @@ export const tripReducer = (
       return state;
   }
 };
+
+export const detailTripReducer = (state = {trip: {}, loading: true}, action) => {
+  switch(action.type){
+    case DETAIL_TRIP_REQUEST:
+      return {loading: true}
+    case DETAIL_TRIP_SUCCESS:
+      return {loading: false, trip: action.payload}
+    case DETAIL_TRIP_FAIL:
+      return {loading: false, error: action.payload}
+    default:
+      return state
+  }
+}
