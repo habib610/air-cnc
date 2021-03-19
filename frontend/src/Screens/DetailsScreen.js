@@ -42,7 +42,7 @@ const DetailsScreen = ({ match }) => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <>
+        <div>
           <Row>
             <Col md={12}>
               <Row noGutters className="mb-5">
@@ -145,15 +145,16 @@ const DetailsScreen = ({ match }) => {
 
                     <Form>
                       <Form.Text>Date</Form.Text>
-                      <Form.Control as="date" size="lg">
-                        23/25/2019 <FontAwesomeIcon icon={faArrowRight} />{" "}
-                        23/25/2019
-                      </Form.Control>
+                      <Form.Group>
+                      {/* <Form.Control size="lg">
+                      <FontAwesomeIcon icon={faArrowRight} />{" "}
+                      </Form.Control> */}
                       <Form.Text>Guest</Form.Text>
                       <Form.Control as="select" size="lg">
                         <option>3 Guest</option>
                         <option>1 Guest</option>
                       </Form.Control>
+                      </Form.Group>
                     </Form>
                     <ListGroup>
                       <ListGroup.Item className="d-flex justify-content-between">
@@ -198,7 +199,7 @@ const DetailsScreen = ({ match }) => {
               </Col>
             </Row>
           </Container>
-        </>
+        </div>
       )}
     </Container>
   );
