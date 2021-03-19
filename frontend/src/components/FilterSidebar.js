@@ -18,9 +18,23 @@ import {
   faPlus,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-const FilterSidebar = () => {
+
+const FilterSidebar = ({history}) => {
+
   const [chevron, setChevron] = useState(false);
+  const [keyword, setKeyWord] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(keyword.trim()){
+      history.push(`/search/${keyword}`)
+    }
+    else {
+      history.push('/')
+    }
+  }
   return (
+    <Form onSubmit={handleSubmit}>
     <Row>
       <Col md={12} className="my-2">
         <Card>
@@ -28,13 +42,14 @@ const FilterSidebar = () => {
             <p className="text-uppercase">
               <strong>Location</strong>
             </p>
-            <Form >
+           
               <FormControl
                 type="text"
                 placeholder="Add city landmark or address"
                 className="mr-sm-2 border-0"
+                onChange={(e)=> setKeyWord(e.target.value)}
               />
-            </Form>
+          
           </Card.Body>
         </Card>
       </Col>
@@ -157,11 +172,12 @@ const FilterSidebar = () => {
             </Accordion.Collapse>
           </Card>
         </Accordion>
-        <Button variant="block btn-success my-2 py-3 rounded-pill">
-          <FontAwesomeIcon icon={faSearch} /> Search
+        <Button type="submit" variant="block btn-success my-2 py-3 rounded-pill">
+          <FontAwesomeIcon icon={faSearch}  /> Search
         </Button>
       </Col>
     </Row>
+    </Form>
   );
 };
 

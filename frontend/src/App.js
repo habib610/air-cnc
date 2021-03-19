@@ -12,6 +12,7 @@ function App() {
      <Header />
      <main>
        <Route path="/" exact component={HomeScreen} />
+       <Route path="/search/:keyword"  component={HomeScreen} />
        <Route path="/details/:id" component={DetailsScreen} />
      </main>
      <footer className="text-center py-3 bg-success mt-5">

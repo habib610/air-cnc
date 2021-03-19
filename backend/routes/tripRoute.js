@@ -18,8 +18,26 @@ tripsRouter.get(
 tripsRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const allTrips = await Trips.find({});
-    res.status(200).json(allTrips);
+    // const place = req.query.keyword ? {
+    //   place:{
+    //     $regex: req.query.keyword,
+    //     $options: 'i'
+    //   }      
+    // }  : {}
+    // const tripByPlace = await Trips.find({...place});
+
+    const name = req.query.keyword ? {
+      name:{
+        $regex: req.query.keyword,
+        $options: 'i'
+      }      
+    }  : {}
+    const tripByName = await Trips.find({...name});
+
+    // const mergedTrips = [...tripByName, ...tripByPlace]
+    // const filterdTrips = mergedTrips.filter(item => item._id )
+    
+    res.status(200).json(tripByName);
   })
 );
 
