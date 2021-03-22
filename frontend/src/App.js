@@ -4,6 +4,8 @@ import Header from './components/Header';
 import HomeScreen from './Screens/HomeScreen';
 import { BrowserRouter,  Route } from 'react-router-dom';
 import DetailsScreen from './Screens/DetailsScreen';
+import LoginScreen from './Screens/LoginScreen';
+import RegisterScreen from './Screens/RegisterScreen';
 
 function App() {
 
@@ -14,7 +16,11 @@ function App() {
        <Route path="/" exact component={HomeScreen} />
        <Route path="/search/:keyword"  component={HomeScreen} />
        <Route path="/details/:id" component={DetailsScreen} />
+       <Route path="/signin" component={LoginScreen} />
+       <Route path="/register" component={RegisterScreen} />
      </main>
+
+
      <footer className="text-center py-3 bg-success mt-5">
        <p className="mb-0"><small>All right Reserved &copy; Habib610</small></p>
      </footer>

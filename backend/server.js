@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import connectionDB from './config/db.js'
 import tripsRouter from './routes/tripRoute.js'
+import userRouter from './routes/userRoute.js'
 
 
 dotenv.config()
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/api/trips',tripsRouter)
+app.use('/api/users', userRouter)
 
 app.listen(PORT, ()=> {
     console.log(`listening to port ${PORT}`.brightYellow.underline.bold)
