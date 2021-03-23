@@ -2,6 +2,7 @@ import {
   USER_SIGN_IN_FAIL,
   USER_SIGN_IN_REQUEST,
   USER_SIGN_IN_SUCCESS,
+  USER_SIGN_OUT,
 } from "../Constants/userConstant";
 import axios from "axios";
 
@@ -24,3 +25,8 @@ export const userSingInAction = (email, password) => async (
     });
   }
 };
+
+export const userSignOutAction = () => (dispatch, getState)=> {
+  dispatch({type: USER_SIGN_OUT})
+  localStorage.removeItem('userInfo')
+}

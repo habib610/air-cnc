@@ -1,4 +1,4 @@
-import { USER_SIGN_IN_FAIL, USER_SIGN_IN_REQUEST, USER_SIGN_IN_SUCCESS } from "../Constants/userConstant";
+import { USER_SIGN_IN_FAIL, USER_SIGN_IN_REQUEST, USER_SIGN_IN_SUCCESS, USER_SIGN_OUT } from "../Constants/userConstant";
 
 export const userSingInReducer = (state = {userInfo: {}, loading: true}, action) => {
     switch(action.type) {
@@ -8,6 +8,8 @@ export const userSingInReducer = (state = {userInfo: {}, loading: true}, action)
             return {loading : false, userInfo: action.payload}
         case USER_SIGN_IN_FAIL:
             return {loading : false, error: action.payload}
+        case USER_SIGN_OUT:
+            return{loading: false, userInfo: {}}
         default: 
             return state
     }

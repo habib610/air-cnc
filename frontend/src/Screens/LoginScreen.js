@@ -12,8 +12,9 @@ const LoginScreen = ({location, history}) => {
   const dispatch = useDispatch()
   const userSignIn = useSelector(state => state.userSignIn);
   const {userInfo }= userSignIn;
+  
 useEffect(()=>{
-if(userInfo) {
+if(userInfo.email) {
   history.push(redirect)
 }
 })
