@@ -40,10 +40,6 @@ h6{
 .card:hover .place{
     color: #00A799;
 }
-
-
-
-
 p{
     font-family: 'Poppins', sans-serif;
     /* font-weight: 400 !important;  */
@@ -69,4 +65,17 @@ p{
     width: 20vw !important;
     background-color: #fff;
     border: 1px solid #ced4da;
+}
+.vw-26 .react-datepicker__input-container > input{
+    width: 26vw !important;
+}
+.vw-26 .react-datepicker__input-container input:focus{
+    border: 1px solid #ced4da !important; 
+}
+.showMoreContainer{
+    transition: all linear .3s;
+    overflow: hidden;
+}
+.showMore{
+    cursor: pointer;
 }

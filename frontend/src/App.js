@@ -6,6 +6,7 @@ import { BrowserRouter,  Route } from 'react-router-dom';
 import DetailsScreen from './Screens/DetailsScreen';
 import LoginScreen from './Screens/LoginScreen';
 import RegisterScreen from './Screens/RegisterScreen';
+import ReviewScreen from './Screens/ReviewScreen';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
        <Route path="/details/:id" component={DetailsScreen} />
        <Route path="/signin" component={LoginScreen} />
        <Route path="/register" component={RegisterScreen} />
+       <Route path="/review" component={ReviewScreen} />
      </main>
 
 

@@ -1,5 +1,4 @@
 import {
-  faArrowRight,
   faCheck,
   faHandSparkles,
   faHome,
@@ -8,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import Calendar from 'react-calendar';
+
 import "react-datepicker/dist/react-datepicker.css";
 import {
   Button,
@@ -217,7 +216,8 @@ const handleReserved = () => {
                       </ListGroup.Item>
                     </ListGroup>
                     <Button onClick = { ()=> {
-                       dispatch(cartAddAction(trip._id, startDate, endDate, numOfGuest));handleReserved()
+                       dispatch(cartAddAction(
+                         trip._id,  trip.name, trip.thumbnail,  trip.numReviews, trip.guestCapacity, trip.cleaner, trip.perPerson, trip.rating,  startDate, endDate,  numOfGuest, trip.guideThumbnail, trip.superHost));handleReserved()
                     }
                       }  disabled={(trip.perPerson * days +   trip.cleaner + 10) < 1 } variant={`block btn-success my-2 py-3 `}>
                       Reserved
