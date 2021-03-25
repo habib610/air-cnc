@@ -8,16 +8,19 @@ const LoginScreen = ({location, history}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const redirect = location.search ? location.search.split("=")[1] : "/"
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+  
   const dispatch = useDispatch()
   const userSignIn = useSelector(state => state.userSignIn);
   const {userInfo }= userSignIn;
   
 useEffect(()=>{
-if(userInfo.email) {
+if(userInfo && userInfo.email) {
   history.push(redirect)
 }
-})
+}, [userInfo, history, redirect])
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(userSingInAction(email, password))

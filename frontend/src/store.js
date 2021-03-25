@@ -3,7 +3,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk'
 import { cartAddReducer } from './Reducers/cartReducer';
 import {  detailTripReducer, tripReducer } from './Reducers/tripReducer';
-import { userSingInReducer } from './Reducers/userReducer';
+import { userRegistrationReducer, userSingInReducer } from './Reducers/userReducer';
 
 const initialState = {
     userSignIn: {
@@ -18,7 +18,8 @@ const reducer = combineReducers({
     listTrip: tripReducer,
     singleTrip: detailTripReducer,
     cart: cartAddReducer,
-    userSignIn: userSingInReducer
+    userSignIn: userSingInReducer,
+    userRegistration: userRegistrationReducer
 })
 const middleWare = [thunk]
 

@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs'
 import { generateToken } from '../utils/utils.js'
 const userRouter = express.Router()
 
-userRouter.post('/register', expressAsyncHandler(async(req, res)=> {
+userRouter.post('/registration', expressAsyncHandler(async(req, res)=> {
     const user = await User({
         name: req.body.name,
         email: req.body.email,
