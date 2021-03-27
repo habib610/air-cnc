@@ -3,38 +3,13 @@ import {
 } from "../Constants/cartConstants";
 
 export const cartAddAction = (
-  id,
-  name,
-  thumbnail,
-  numReviews,
-  guestCapacity,
-  cleaner,
-  perPerson,
-  rating,
-  startDate,
-  endDate,
-  numOfGuest,
-  guideThumbnail,
-  superHost
+  id,  name, thumbnail,  numReviews, guestCapacity, cleaner, perPerson, rating,  startDate, endDate,  numOfGuest, guideThumbnail, superHost
 ) => (dispatch, getState) => {
   dispatch({
     type: CART_ADD_ITEM,
     payload: {
-      name,
-      thumbnail,
-      numReviews,
-      guestCapacity,
-      cleaner,
-      perPerson,
-      rating,
-      startDate,
-      endDate,
-      numOfGuest,
-      id,
-      guideThumbnail,
-      superHost
+      id,  name, thumbnail,  numReviews, guestCapacity, cleaner, perPerson, rating,  startDate, endDate,  numOfGuest, guideThumbnail, superHost
     },
   });
-
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };

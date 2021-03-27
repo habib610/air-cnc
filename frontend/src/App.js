@@ -7,6 +7,8 @@ import DetailsScreen from './Screens/DetailsScreen';
 import LoginScreen from './Screens/LoginScreen';
 import RegisterScreen from './Screens/RegisterScreen';
 import ReviewScreen from './Screens/ReviewScreen';
+import TravellingScreen from './Screens/TravellingScreen';
+import PaymentScreen from './Screens/PaymentScreen';
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
        <Route path="/signin" component={LoginScreen} />
        <Route path="/register" component={RegisterScreen} />
        <Route path="/review" component={ReviewScreen} />
+       <Route path="/travelling" component={TravellingScreen} />
+       <Route path="/payment" component={PaymentScreen} />
      </main>
 
 

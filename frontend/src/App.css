@@ -79,3 +79,11 @@ p{
 .showMore{
     cursor: pointer;
 }
+.form-control{
+    font-size: 1.2rem !important;
+}
+.form-control:focus {
+    border-color: #86f244 !important;
+    box-shadow: inset 0 1px 1px rgba(17, 168, 255, 0.158), 0 0 8px rgba(61, 255, 3, 0.6) !important;
+  }
+

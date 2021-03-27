@@ -14,18 +14,10 @@ import CheckOutStep from "../components/CheckOutStep";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBabyCarriage,
-  faChevronDown,
-  faChevronUp,
-  faExclamationCircle,
-  faPaw,
-  faSmoking,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import {faStar} from "@fortawesome/free-solid-svg-icons";
 import { cartAddAction } from "../Actions/cartAction";
 
-const ReviewScreen = ({ history }) => {
+const TravellingScreen = ({ history }) => {
   const dispatch = useDispatch();
   const userSignIn = useSelector((state) => state.userSignIn);
   const cart = useSelector((state) => state.cart);
@@ -57,151 +49,67 @@ const ReviewScreen = ({ history }) => {
   const [startingDate, setStartingDate] = useState(new Date(startDate));
   const [endingDate, setEndingDate] = useState(new Date(new Date(endDate)));
   const [guest, setGuest] = useState(numOfGuest);
-  const [showMore, setShowMore] = useState(false);
   const days = Math.ceil((endingDate - startingDate) / (1000 * 3600 * 24));
 
-  const checkIn = startingDate.toDateString();
-  const checkInHours = new Date(startingDate);
-
-  const checkOut = endingDate.toDateString();
-  const checkOutHours = new Date(endingDate);
 
   const handleContinue = () => {
-    dispatch(cartAddAction( 
-      id,
-      name,
-      thumbnail,
-      numReviews,
-      guestCapacity,
-      cleaner,
-      perPerson,
-      rating,
-      startingDate,
-      endingDate,
-      guest,
-      guideThumbnail,
-      superHost,))
-    history.push("/travelling");
+    dispatch(
+      cartAddAction(
+        id,
+        name,
+        thumbnail,
+        numReviews,
+        guestCapacity,
+        cleaner,
+        perPerson,
+        rating,
+        startingDate,
+        endingDate,
+        guest,
+        guideThumbnail,
+        superHost
+      )
+    );
+    history.push("/payment");
   };
 
   return (
     <Container>
-      <CheckOutStep step1 />
+      <CheckOutStep step1 step2 />
       <Row>
-        <Col md={7}>
-          <h1>Review House Roles</h1>
-          <h4 className="my-4">{days} nights in Dhaka</h4>
+        <Col md={7} className="mt-5">
+          <h3>Traveling for work?</h3>
           <Row>
-            <Col md={6}>
-              <Row noGutters>
-                <Col md={3}>
-                  <h6 className="bg-secondary text-center text-uppercase p-2 mr-2">
-                    {checkIn.split(" ")[1]}
-                    <br />
-                    {checkIn.split(" ")[2]}
-                  </h6>
-                </Col>
-                <Col md={9}>
-                  <p className="text-secondary mb-0 small">
-                    <small>
-                      {startingDate.toLocaleDateString("en-US", {
-                        weekday: "long",
-                      })}
-                      day CheckIn
-                    </small>
-                  </p>
-                  <p className="text-secondary mb-0">
-                    <small>
-                      After{" "}
-                      {checkInHours.toLocaleString("en-US", {
-                        hour: "numeric",
-                        hour12: true,
-                      })}
-                    </small>
-                  </p>
-                </Col>
-              </Row>
+            <Col md={9}>
+              <p className="mb-0">
+                <small>Say hello to your host</small>
+              </p>
+              <p>
+                <small>
+                  Let Rowdra know a little about yourself and why you’re coming.
+                </small>
+              </p>
+              <Form>
+                <Form.Group controlId="exampleForm.ControlTextarea1">
+                  <Form.Control as="textarea" className="my-5" placeholder="Message to your super host" rows={5} />
+                </Form.Group>
+              </Form>
+              <Button onClick={handleContinue} variant="success py-3">
+               Continue
+              </Button>
             </Col>
-            <Col md={6}>
-              <Row noGutters>
-                <Col md={3}>
-                  <h6 className="bg-secondary text-center text-uppercase p-2 mr-2">
-                    {checkOut.split(" ")[1]}
-                    <br />
-                    {checkOut.split(" ")[2]}
-                  </h6>
-                </Col>
-                <Col md={9}>
-                  <p className="text-secondary mb-0 small">
-                    <small>
-                      {endingDate.toLocaleDateString("en-US", {
-                        weekday: "long",
-                      })}{" "}
-                      Checkout
-                    </small>
-                  </p>
-                  <p className="text-secondary mb-0">
-                    <small>
-                      Before{" "}
-                      {checkOutHours.toLocaleString("en-US", {
-                        hour: "numeric",
-                        hour12: true,
-                      })}
-                    </small>
-                  </p>
-                </Col>
-              </Row>
+            <Col
+              md={3}
+              className="d-flex flex-column"
+              style={{ alignItems: "center" }}
+            >
+              <Image
+                className="rounded-circle fluid w-75"
+                src={guideThumbnail}
+              />
+              <p className="text-dark ">{superHost}</p>
             </Col>
           </Row>
-          <p className="text-dark my-4">Self Check In With Building Stuff</p>
-          <div className="bg-dark my-4" style={{ height: "3px" }}></div>
-          <h4 className="my-4">Things to keep in Mind</h4>
-
-          <div
-            className="showMoreContainer"
-            style={{ height: showMore ? "226px" : "115px" }}
-          >
-            <p className="my-4">
-              {" "}
-              <span className="p-2 border rounded mr-3 my-2">
-                {" "}
-                <FontAwesomeIcon icon={faBabyCarriage} />
-              </span>{" "}
-              Suitable for children and infants{" "}
-            </p>
-            <p className="my-4">
-              {" "}
-              <span className="p-2 border rounded mr-3">
-                {" "}
-                <FontAwesomeIcon icon={faPaw} />
-              </span>{" "}
-              Pets allowed{" "}
-            </p>
-            <p className="my-4">
-              {" "}
-              <span className="p-2 border rounded mr-3 text-danger">
-                {" "}
-                <FontAwesomeIcon icon={faExclamationCircle} />
-              </span>{" "}
-              No Parties Event{" "}
-            </p>
-            <p className="my-4">
-              {" "}
-              <span className="p-2 border rounded mr-3">
-                {" "}
-                <FontAwesomeIcon icon={faSmoking} />
-              </span>{" "}
-              Smoking Allowed{" "}
-            </p>
-          </div>
-          <h5
-            className="showMore text-primary"
-            onClick={() => setShowMore(!showMore)}
-          >
-            {" "}
-            {showMore ? "Read Less" : "Read More"}{" "}
-            <FontAwesomeIcon icon={showMore ? faChevronUp : faChevronDown} />{" "}
-          </h5>
         </Col>
         <Col md={5}>
           <Card>
@@ -296,12 +204,8 @@ const ReviewScreen = ({ history }) => {
           </Card>
         </Col>
       </Row>
-
-      <Button onClick={handleContinue} variant="success my-5 py-3">
-        Agree And Continue
-      </Button>
     </Container>
   );
 };
 
-export default ReviewScreen;
+export default TravellingScreen;
