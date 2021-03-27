@@ -3,6 +3,8 @@ import mongoose from 'mongoose'
 const tripSchema = mongoose.Schema({
     name: {type: String, require: true, unique: true},
     perPerson: {type: Number, require: true},
+    wifi: {type: Boolean, default: true},
+    cancellation: {type: Boolean, default: true},
     total: {type: Number, require: true},
     numReviews: {type: Number, require: true},
     rating: {type: Number, require: true},

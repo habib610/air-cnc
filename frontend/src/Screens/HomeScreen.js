@@ -9,15 +9,17 @@ import Message from "../components/Message";
 import { Route } from "react-router";
 
 const HomeScreen = ({ history, match }) => {
-  const keyword = match.params.keyword;
+
 
   const cardClick = (id) => {
     history.push(`/details/${id}`);
   };
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(listTripActions(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listTripActions());
+  }, [dispatch]);
+
   const listTrip = useSelector((state) => state.listTrip);
   const { loading, homes, experiences, error } = listTrip;
 
@@ -42,10 +44,7 @@ const HomeScreen = ({ history, match }) => {
               <Message variant="danger">{error}</Message>
             ) : (
               <>
-              {
-                  experiences.length === 0 && homes.length === 0 && <h2 className="text-center text-danger" >404! <small>Result not Found</small> </h2> 
-              }
-             { experiences.length !== 0 &&   <h2>Experiences</h2>}  
+                <h2>Experiences</h2>
                 <Row className="experience">
                   {experiences.map((trip) => (
                     <Col xs={12} sm={12} md={6} lg={3} key={trip._id}>
@@ -77,7 +76,7 @@ const HomeScreen = ({ history, match }) => {
               <Message variant="danger">{error}</Message>
             ) : (
               <>
-              {homes.length !== 0 && <h2>Homes</h2>}  
+                <h2>Homes</h2>
                 <Row className="home">
                   {homes.map((trip) => (
                     <Col xs={12} sm={12} md={4} key={trip._id}>

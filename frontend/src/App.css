@@ -31,7 +31,7 @@ h6{
     transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1s !important;
 }
 .card:hover{
-    box-shadow: 0px 0px 8px 4px #87f244a2 !important;
+    box-shadow: 0px 0px 8px 4px #87f24463 !important;
     cursor: pointer;
 }
 .experience .card-body{
@@ -99,8 +99,46 @@ p{
     border: none !important;
     color: rgb(104, 100, 100);
     padding: 5px 10px;
+    width: inherit;
 }
 input:focus{
     outline:none !important;
     border: 0px !important;
 }
+.border-gray{
+    border-bottom: 2px solid lightgray !important;
+}
+
+.myPosition{
+    position: absolute;
+    min-width: 10vw;
+    top: 20px;
+    left: 35vw;
+    right: 50%;
+    box-shadow: 0px 0px 8px 4px #87f24438 !important;
+    height: 5vh;
+    z-index: 9999;
+}
+.myPosition input{
+    outline: none !important;
+    border: none !important;
+    width: inherit;
+    height: inherit;
+    padding: 5px 10px;
+   
+}
+.timesButton{
+    margin-left: 80px;
+    margin-top: 35px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px 4px #87f24438 !important;
+}
+@media only screen and (max-width: 600px) {
+    .myPosition {
+      display: none;
+    }
+  }

@@ -8,7 +8,7 @@ const tripsRouter = express.Router();
 tripsRouter.get(
   "/seed",
   expressAsyncHandler(async (req, res) => {
-    //   await Trips.remove({})
+      // await Trips.remove({})
     const createdTrips = await Trips.insertMany(data.allTrips);
     res.send({createdTrips});
   })

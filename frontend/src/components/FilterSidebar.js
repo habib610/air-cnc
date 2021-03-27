@@ -23,6 +23,8 @@ const FilterSidebar = ({history}) => {
 
   const [chevron, setChevron] = useState(false);
   const [keyword, setKeyWord] = useState('');
+  const [child, setChild] = useState(2)
+  const [adult, setAdults] = useState(2)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -88,7 +90,7 @@ const FilterSidebar = ({history}) => {
         </Card>
       </Col>
       <Col md={12} className="my-2">
-        <Accordion defaultActiveKey="0">
+        <Accordion >
           <Card>
             <Accordion.Toggle
               as={Card.Header}
@@ -105,8 +107,7 @@ const FilterSidebar = ({history}) => {
                     <small>Guest</small>
                   </p>
                   <p className="mb-1">
-                    {" "}
-                    <strong>2 Adults, 1 Child</strong>{" "}
+                    <strong>{adult} Adults, {child} Child</strong>
                   </p>
                 </div>
                 {chevron ? (
@@ -129,12 +130,12 @@ const FilterSidebar = ({history}) => {
                   </p>
                   <div>
                     <p className="pt-2">
-                      <Button variant="secondary">
+                      <Button variant="secondary" onClick={()=> setAdults(adult + 1)} >
                         <FontAwesomeIcon icon={faPlus} />
                       </Button>
-                      <strong className="mx-2 ">2</strong>
-                      <Button variant="secondary">
-                        <FontAwesomeIcon icon={faMinus} />
+                      <strong className="mx-2 ">{adult}</strong>
+                      <Button variant="secondary" onClick={()=> setAdults(adult - 1)} disabled={adult < 2 }>
+                        <FontAwesomeIcon icon={faMinus}  />
                       </Button>
                     </p>
                   </div>
@@ -153,11 +154,11 @@ const FilterSidebar = ({history}) => {
                   </p>
                   <div>
                     <p className="pt-2">
-                      <Button variant="secondary">
+                      <Button variant="secondary" onClick={()=> setChild(child + 1)}>
                         <FontAwesomeIcon icon={faPlus} />
                       </Button>
-                      <strong className="mx-2">2</strong>
-                      <Button variant="secondary">
+                      <strong className="mx-2">{child}</strong>
+                      <Button variant="secondary" disabled={child < 2 } onClick={()=> setChild(child - 1)}>
                         <FontAwesomeIcon icon={faMinus} />
                       </Button>
                     </p>
