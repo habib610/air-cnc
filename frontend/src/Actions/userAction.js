@@ -1,4 +1,5 @@
 import {
+  USER_MESSAGE,
   USER_REGISTRATION_FAIL,
   USER_REGISTRATION_REQUEST,
   USER_REGISTRATION_SUCCESS,
@@ -51,4 +52,10 @@ export const userRegistrationAction = (name, email, password) => async(dispatch)
 export const userSignOutAction = () => (dispatch, getState)=> {
   dispatch({type: USER_SIGN_OUT})
   localStorage.removeItem('userInfo')
+}
+
+
+export const messageUserAction = (message) => (dispatch, getState) => {
+  dispatch({type: USER_MESSAGE, payload: message})
+  localStorage.setItem('userMessage', JSON.stringify(getState().messageUser.userMessage))
 }

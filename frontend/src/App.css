@@ -87,3 +87,20 @@ p{
     box-shadow: inset 0 1px 1px rgba(17, 168, 255, 0.158), 0 0 8px rgba(61, 255, 3, 0.6) !important;
   }
 
+.cardNumber{
+    font-size: 1.4rem;
+    border: 1px solid rgb(163, 163, 163);
+ 
+    border-radius: 5px;
+    align-items: center;
+    overflow: hidden;
+}
+.cardNumber input{
+    border: none !important;
+    color: rgb(104, 100, 100);
+    padding: 5px 10px;
+}
+input:focus{
+    outline:none !important;
+    border: 0px !important;
+}

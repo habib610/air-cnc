@@ -6,6 +6,7 @@ import {
   Container,
   Form,
   Image,
+  InputGroup,
   ListGroup,
   Row,
 } from "react-bootstrap";
@@ -15,9 +16,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCreditCard,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { cartAddAction } from "../Actions/cartAction";
+import master from "../mastercard.png"
+import visa from "../visa.png"
+import amex from "../amex.png"
+import paypal from "../paypal.png"
+
+
+
 
 const PaymentScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -76,22 +85,86 @@ const PaymentScreen = ({ history }) => {
     history.push("/payment");
   };
 
+
   return (
     <Container>
       <CheckOutStep step1 step2 step3 />
       <Row>
         <Col md={7} className="mt-5">
-          <h3>Payment Selection</h3>
-          <Row>
-            <Col md={12}>
-                <h1>Debit card</h1>
+        <h3 className="text-secondary mb-4">Payment Selection</h3>
+        <Form>
+          <Row className="p-4 border border-dark">
+            <Col>
+            <Row>
+           <Col md={1}>
+          <InputGroup>
+          <Form.Check type="radio"  name="payment" ></Form.Check>
+          {/* <Form.Check type="radio"  name="payment" ></Form.Check> */}
+          </InputGroup>
+           </Col>
+           <Col md={8}>
+            <h4>Credit Card</h4>
+            <p className="text-secondary"><small>Safe money transfer using your bank account. Visa, Maestro, Discover, American Express.</small></p>
+           </Col>
+           <Col md={3}>
+             <Image src={master} />
+             <Image className="mx-1" src={visa} />
+             <Image src={amex} />
+           </Col>
+         </Row>
+         <Row className=" mt-5">
+           <Col>
+           <p className="text-muted mb-1"><small>Card Number</small></p>
+           <div className="cardNumber d-flex justify-content-between pr-2">
+            <input  type="text" placeholder="0000 0000 0000 0000" maxLength="19" />
+            <FontAwesomeIcon icon={faCreditCard}  />
+          </div>
+          </Col>
+         </Row>
+         <Row className=" my-4">
+           <Col md={5}>
+           <p className="text-muted mb-1"><small>Card Name</small></p>
+           <div className="cardNumber ">
+            <input type="text" placeholder="Card Name"  />
+          </div>
+          </Col>
+           <Col md={3}>
+           <p className="text-muted mb-1"><small>Expire Date</small></p>
+           <div className="cardNumber">
+            <input type="text" placeholder="MM/YY" maxLength="5" />  
+          </div>
+          </Col>
+           <Col md={3}>
+           <p className="text-muted mb-1"><small>CVC</small></p>
+           <div className="cardNumber d-flex justify-content-between">
+            <input type="text" placeholder="CVC" maxLength="3"  />
+          </div>
+          </Col>
+         </Row>
             </Col>
-            <Col md={12}>
-                <h1>PayPal</h1>
-            </Col>
-            
           </Row>
+         
+     
+         <Row className="p-4 my-5 border border-dark">
+           <Col md={1}>
+          <InputGroup>
+          <Form.Check type="radio"  name="payment" ></Form.Check>
+          </InputGroup>
+           </Col>
+           <Col md={8}>
+            <h4>PayPal</h4>
+            <p className="text-secondary"><small>Safe money transfer using your bank account. Visa, Maestro, Discover, American Express.</small></p>
+           </Col>
+           <Col md={3}>
+             <Image src={paypal} />
+             
+           </Col>
+         </Row>
+
+         </Form>
         </Col>
+
+
         <Col md={5}>
           <Card>
             <Card.Body>

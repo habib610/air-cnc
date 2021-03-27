@@ -23,7 +23,7 @@ function App() {
        <Route path="/register" component={RegisterScreen} />
        <Route path="/review" component={ReviewScreen} />
        <Route path="/travelling" component={TravellingScreen} />
-       <Route path="/payment" component={PaymentScreen} />
+       <Route path="/payment-method" component={PaymentScreen} />
      </main>
 
 

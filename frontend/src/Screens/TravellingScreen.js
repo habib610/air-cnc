@@ -16,6 +16,7 @@ import DatePicker from "react-datepicker";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
 import { cartAddAction } from "../Actions/cartAction";
+import { messageUserAction } from "../Actions/userAction";
 
 const TravellingScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ const TravellingScreen = ({ history }) => {
   const [endingDate, setEndingDate] = useState(new Date(new Date(endDate)));
   const [guest, setGuest] = useState(numOfGuest);
   const days = Math.ceil((endingDate - startingDate) / (1000 * 3600 * 24));
-
+  const [message, setMessage] = useState('');
 
   const handleContinue = () => {
     dispatch(
@@ -70,7 +71,8 @@ const TravellingScreen = ({ history }) => {
         superHost
       )
     );
-    history.push("/payment");
+    dispatch(messageUserAction(message))
+    history.push("/payment-method");
   };
 
   return (
@@ -91,10 +93,10 @@ const TravellingScreen = ({ history }) => {
               </p>
               <Form>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Control as="textarea" className="my-5" placeholder="Message to your super host" rows={5} />
+                  <Form.Control as="textarea" className="my-5" onChange={(e)=> setMessage(e.target.value)} placeholder="Message to your super host" rows={5} />
                 </Form.Group>
               </Form>
-              <Button onClick={handleContinue} variant="success py-3">
+              <Button disabled={message.length < 6} onClick={handleContinue} variant="success py-3">
                Continue
               </Button>
             </Col>
