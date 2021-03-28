@@ -8,48 +8,48 @@ import Message from "../components/Message";
 import { PayPalButton } from "react-paypal-button-v2";
 import { ORDER_PAY_RESET } from "../Constants/orderConstant";
 
-
 const OrderDetailsScreen = ({ match }) => {
-  const [sdkReady, setSdkReady] = useState(false)
+  const [sdkReady, setSdkReady] = useState(false);
   const orderId = match.params.orderId;
   const dispatch = useDispatch();
   const orderDetails = useSelector((state) => state.orderDetails);
   const { loading, error, order } = orderDetails;
 
-
   const orderPay = useSelector((state) => state.orderPay);
-  const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
+  const {
+    loading: loadingPay,
+    success: successPay,
+    error: errorPay,
+  } = orderPay;
   useEffect(() => {
-    const addPayPalScript = async()=> {
-      const {data} = await axios.get('/api/config/paypal')
-      const script = document.createElement('script')
-      script.type = "text/javascript"
+    const addPayPalScript = async () => {
+      const { data } = await axios.get("/api/config/paypal");
+      const script = document.createElement("script");
+      script.type = "text/javascript";
       script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
       script.async = true;
-      script.onload = ()=> {
-        setSdkReady(true)
-      }
-      document.body.appendChild(script)
-    }
-    if(!order || successPay || (order && order._id !== orderId) ){
-      dispatch({type:ORDER_PAY_RESET})
+      script.onload = () => {
+        setSdkReady(true);
+      };
+      document.body.appendChild(script);
+    };
+    if (!order || successPay || (order && order._id !== orderId)) {
+      dispatch({ type: ORDER_PAY_RESET });
       dispatch(detailsOrderAction(orderId));
     } else {
-      if(!order.isPaid){
-        if(!window.paypal){
-          addPayPalScript()
+      if (!order.isPaid) {
+        if (!window.paypal) {
+          addPayPalScript();
         } else {
-          setSdkReady(true)
+          setSdkReady(true);
         }
       }
     }
-    
   }, [dispatch, orderId, successPay, order]);
 
-const successPaymentHandler = (paymentResult) => {
-  dispatch(orderPayAction(orderId, paymentResult))
-
-}
+  const successPaymentHandler = (paymentResult) => {
+    dispatch(orderPayAction(orderId, paymentResult));
+  };
   return (
     <Container>
       <h1 className="mb-2">Order Details</h1>
@@ -65,16 +65,27 @@ const successPaymentHandler = (paymentResult) => {
               <Card>
                 <Card.Img variant="top" src={order.thumbnail}></Card.Img>
                 <Card.Body>
-                  <Card.Title className="font-weight-bold">{order.tripName}</Card.Title>
+                  <Card.Title className="font-weight-bold">
+                    {order.tripName}
+                  </Card.Title>
                 </Card.Body>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
-                    <Alert className="font-weight-bold" variant={order.isPaid ? "success" : "danger"}>
-                      {order.isPaid ? "Paid At : " + new Date(order.paidAt).toLocaleDateString() : "Not Paid"  }
+                    <Alert
+                      className="font-weight-bold"
+                      variant={order.isPaid ? "success" : "danger"}
+                    >
+                      {order.isPaid
+                        ? "Paid At : " +
+                          new Date(order.paidAt).toLocaleDateString()
+                        : "Not Paid"}
                     </Alert>
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    <Alert className="font-weight-bold" variant={order.isConfirmed ? "success" : "danger"}>
+                    <Alert
+                      className="font-weight-bold"
+                      variant={order.isConfirmed ? "success" : "danger"}
+                    >
                       {order.isConfirmed
                         ? "Your Trip Is Confirmed"
                         : "Not confirmed"}
@@ -87,10 +98,14 @@ const successPaymentHandler = (paymentResult) => {
                     Your Guest: <strong>{order.guest}</strong>
                   </ListGroup.Item>
                   <ListGroup.Item size="lg">
-                    Start Date: <strong>{new Date(order.start).toLocaleDateString()}</strong> 
+                    Start Date:{" "}
+                    <strong>
+                      {new Date(order.start).toLocaleDateString()}
+                    </strong>
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    Start Date: <strong>{new Date(order.end).toLocaleDateString()}</strong>
+                    Start Date:{" "}
+                    <strong>{new Date(order.end).toLocaleDateString()}</strong>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     Super Host: <strong>{order.superHost}</strong>
@@ -99,38 +114,38 @@ const successPaymentHandler = (paymentResult) => {
               </Card>
             </Col>
             <Col md={6}>
-              <ListGroup >
+              <ListGroup>
                 <ListGroup.Item>
-                  <h4 className="font-weight-bold text-center text-uppercase" >Order Summary</h4>
+                  <h4 className="font-weight-bold text-center text-uppercase">
+                    Order Summary
+                  </h4>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <h4 >{order.tripName}</h4>
+                  <h4>{order.tripName}</h4>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <h4 >Total Price: $<span className="font-weight-bold">{order.total}</span>  </h4>
+                  <h4>
+                    Total Price: $
+                    <span className="font-weight-bold">{order.total}</span>{" "}
+                  </h4>
                 </ListGroup.Item>
               </ListGroup>
-              {
-                !order.isPaid && (
-                  
-                    <ListGroup>
-                      <ListGroup.Item>
-                        {
-                          errorPay && <Message variant="danger">{errorPay}</Message>
-                        }
-                        {
-                          loadingPay && <Loader />
-                        }
-                        {
-                          !sdkReady ? <Loader /> : (
-                            <PayPalButton amount={order.total} onSuccess={successPaymentHandler} />
-                          )
-                        }
-                      </ListGroup.Item>
-                    </ListGroup>
-                  
-                )
-              }
+              {!order.isPaid && (
+                <ListGroup>
+                  <ListGroup.Item>
+                    {errorPay && <Message variant="danger">{errorPay}</Message>}
+                    {loadingPay && <Loader />}
+                    {!sdkReady ? (
+                      <Loader />
+                    ) : (
+                      <PayPalButton
+                        amount={order.total}
+                        onSuccess={successPaymentHandler}
+                      />
+                    )}
+                  </ListGroup.Item>
+                </ListGroup>
+              )}
             </Col>
           </Row>
         </>

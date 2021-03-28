@@ -62,7 +62,7 @@ const FilterSidebar = ({history}) => {
               <Col className="mx-1">
                 <p className="text-secondary small p-0 m-0"><small>Arrival</small></p>
                 <p className="mb-0">
-                24/04/2020
+                {new Date().toLocaleDateString()}
                 </p>
               </Col>
               <Col className="ml-1">
@@ -79,7 +79,7 @@ const FilterSidebar = ({history}) => {
               <Col className="mx-1">
                 <p className="text-secondary small p-0 m-0"><small>Departure</small></p>
                 <p className="mb-0">
-                  24/04/2020
+                  {new Date().toLocaleDateString()}
                 </p>
               </Col>
               <Col className="ml-1">

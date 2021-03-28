@@ -28,9 +28,9 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link className="mx-2">Host your Home</Nav.Link>
-              <Nav.Link className="mx-2">Host Your Experience</Nav.Link>
-              <Nav.Link className="mx-2">Help</Nav.Link>
+              <LinkContainer to="/experience" className="mx-2 font-weight-bold"><Nav.Link>Host Your Experience</Nav.Link></LinkContainer>
+              <LinkContainer to="/home" className="mx-2 font-weight-bold"><Nav.Link>Host your Home</Nav.Link></LinkContainer>
+              <LinkContainer to="/help" className="mx-2 font-weight-bold"><Nav.Link>Help</Nav.Link></LinkContainer>
              
               {userInfo && userInfo.name ? 
                 <NavDropdown className="mr-2" title={userInfo.name} id="basic-nav-dropdown">
@@ -49,7 +49,6 @@ const Header = () => {
                 </Button>
               
               }
-
               <Button variant="btn btn-success">Search</Button>
             </Nav>
           </Navbar.Collapse>

@@ -11,6 +11,7 @@ import TravellingScreen from './Screens/TravellingScreen';
 import PaymentScreen from './Screens/PaymentScreen';
 import SearchScreen from './Screens/SearchScreen';
 import OrderDetailsScreen from './Screens/OrderDetailsScreen';
+import ExperienceScreen from './Screens/ExperienceScreen';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
      <Header />
      <main>
        <Route path="/" exact component={HomeScreen} />
+       <Route path="/experience" component={ExperienceScreen} />
        <Route path="/search/:keyword"  component={SearchScreen} />
        <Route path="/details/:id" component={DetailsScreen} />
        <Route path="/signin" component={LoginScreen} />

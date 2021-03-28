@@ -14,6 +14,23 @@ tripsRouter.get(
   })
 );
 
+tripsRouter.get('/experience', expressAsyncHandler(async(req, res)=> {
+  const allExperience = await Trips.find({category: 'experiences'})
+  if(allExperience){
+    res.status(200).send(allExperience)
+  } else {
+    res.status(404).send({message: "Nothing Found"})
+  }
+}))
+tripsRouter.get('/homes', expressAsyncHandler(async(req, res)=> {
+  const allHomes = await Trips.find({category: 'homes'})
+  if(allHomes){
+    res.status(200).send(allHomes)
+  } else {
+    res.status(404).send({message: "Nothing Found"})
+  }
+}))
+
 //load all trips
 tripsRouter.get(
   "/",
