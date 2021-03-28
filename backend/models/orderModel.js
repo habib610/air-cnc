@@ -24,9 +24,16 @@ const orderSchema = new mongoose.Schema({
     total: {type: Number, require: true},
     cleaner: {type: Number, require: true},
     isPaid: {type: Boolean, default: false},
+    paidAt: {type: Date},
     paymentMethod: { type: String, required: true },
     isConfirmed:{type: Boolean, default: false},
     location: {type: String, require: true},
+    paymentResult: {
+        id: String,
+        status: String,
+        update_time: String,
+        email_address: String
+    }
 }, 
 {
     timestamps: true

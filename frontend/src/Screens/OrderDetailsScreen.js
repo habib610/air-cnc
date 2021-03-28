@@ -2,10 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Alert, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { detailsOrderAction } from "../Actions/orderActions";
+import { detailsOrderAction, orderPayAction } from "../Actions/orderActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { PayPalButton } from "react-paypal-button-v2";
+import { ORDER_PAY_RESET } from "../Constants/orderConstant";
 
 
 const OrderDetailsScreen = ({ match }) => {
@@ -15,6 +16,9 @@ const OrderDetailsScreen = ({ match }) => {
   const orderDetails = useSelector((state) => state.orderDetails);
   const { loading, error, order } = orderDetails;
 
+
+  const orderPay = useSelector((state) => state.orderPay);
+  const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
   useEffect(() => {
     const addPayPalScript = async()=> {
       const {data} = await axios.get('/api/config/paypal')
@@ -27,7 +31,8 @@ const OrderDetailsScreen = ({ match }) => {
       }
       document.body.appendChild(script)
     }
-    if(!order._id){
+    if(!order || successPay || (order && order._id !== orderId) ){
+      dispatch({type:ORDER_PAY_RESET})
       dispatch(detailsOrderAction(orderId));
     } else {
       if(!order.isPaid){
@@ -39,8 +44,10 @@ const OrderDetailsScreen = ({ match }) => {
       }
     }
     
-  }, [dispatch, orderId, order]);
-const successPaymentHandler = () => {
+  }, [dispatch, orderId, successPay, order]);
+
+const successPaymentHandler = (paymentResult) => {
+  dispatch(orderPayAction(orderId, paymentResult))
 
 }
   return (
@@ -63,7 +70,7 @@ const successPaymentHandler = () => {
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <Alert className="font-weight-bold" variant={order.isPaid ? "success" : "danger"}>
-                      {order.isPaid ? "Paid" : "Not Paid"}
+                      {order.isPaid ? "Paid At : " + new Date(order.paidAt).toLocaleDateString() : "Not Paid"  }
                     </Alert>
                   </ListGroup.Item>
                   <ListGroup.Item>
@@ -108,6 +115,12 @@ const successPaymentHandler = () => {
                   
                     <ListGroup>
                       <ListGroup.Item>
+                        {
+                          errorPay && <Message variant="danger">{errorPay}</Message>
+                        }
+                        {
+                          loadingPay && <Loader />
+                        }
                         {
                           !sdkReady ? <Loader /> : (
                             <PayPalButton amount={order.total} onSuccess={successPaymentHandler} />
