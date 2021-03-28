@@ -10,6 +10,7 @@ import ReviewScreen from './Screens/ReviewScreen';
 import TravellingScreen from './Screens/TravellingScreen';
 import PaymentScreen from './Screens/PaymentScreen';
 import SearchScreen from './Screens/SearchScreen';
+import OrderDetailsScreen from './Screens/OrderDetailsScreen';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
        <Route path="/review" component={ReviewScreen} />
        <Route path="/travelling" component={TravellingScreen} />
        <Route path="/payment-method" component={PaymentScreen} />
+       <Route path="/order/:orderId" component={OrderDetailsScreen} />
      </main>
 
 

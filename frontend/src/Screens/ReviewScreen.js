@@ -246,7 +246,7 @@ const ReviewScreen = ({ history }) => {
                     as="select"
                     size="lg"
                     value={guest}
-                    onChange={(e) => setGuest(e.target.value)}
+                    onChange={(e) => setGuest(Number(e.target.value))}
                   >
                     {[...Array(guestCapacity).keys()].map((item) => (
                       <option key={item + 1} value={item + 1}>

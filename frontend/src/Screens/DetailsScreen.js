@@ -170,7 +170,7 @@ const handleReserved = () => {
                           <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
                       </Form.Group>
                       <Form.Text>Guest</Form.Text>
-                      <Form.Control as="select" size="lg" onChange={(e)=> setNumOfGuest(e.target.value)}>
+                      <Form.Control as="select" size="lg" onChange={(e)=> setNumOfGuest(Number(e.target.value))}>
                         {
                           [...Array(trip.guestCapacity).keys()].map(item =>
                           <option key={item + 1}
