@@ -33,7 +33,9 @@ app.get('/', (req, res) => {
 app.use('/api/trips',tripsRouter)
 app.use('/api/users', userRouter)
 app.use('/api/order', orderRoute)
-
+app.get('/api/config/paypal', (req, res)=> {
+    res.send(process.env.PAYPAL_CLIENT_ID)
+})
 app.listen(PORT, ()=> {
     console.log(`listening to port ${PORT}`.brightYellow.underline.bold)
 })
