@@ -18,9 +18,25 @@ import {
   faPlus,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-const FilterSidebar = () => {
+
+const FilterSidebar = ({history}) => {
+
   const [chevron, setChevron] = useState(false);
+  const [keyword, setKeyWord] = useState('');
+  const [child, setChild] = useState(2)
+  const [adult, setAdults] = useState(2)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(keyword.trim()){
+      history.push(`/search/${keyword}`)
+    }
+    else {
+      history.push('/')
+    }
+  }
   return (
+    <Form onSubmit={handleSubmit}>
     <Row>
       <Col md={12} className="my-2">
         <Card>
@@ -28,13 +44,14 @@ const FilterSidebar = () => {
             <p className="text-uppercase">
               <strong>Location</strong>
             </p>
-            <Form >
+           
               <FormControl
                 type="text"
                 placeholder="Add city landmark or address"
                 className="mr-sm-2 border-0"
+                onChange={(e)=> setKeyWord(e.target.value)}
               />
-            </Form>
+          
           </Card.Body>
         </Card>
       </Col>
@@ -42,13 +59,13 @@ const FilterSidebar = () => {
         <Card className="border-rounded">
           <Card.Body className="px-2 py-3  ">
             <Row>
-              <Col className="mx-4">
-                <p className="text-secondary small p-0 m-0">Arrival</p>
+              <Col className="mx-1">
+                <p className="text-secondary small p-0 m-0"><small>Arrival</small></p>
                 <p className="mb-0">
-                  <strong>24/04/2020</strong>
+                {new Date().toLocaleDateString()}
                 </p>
               </Col>
-              <Col className="ml-2">
+              <Col className="ml-1">
                 <FontAwesomeIcon className="fa-2x" icon={faCalendarAlt} />
               </Col>
             </Row>
@@ -59,13 +76,13 @@ const FilterSidebar = () => {
         <Card>
           <Card.Body className="px-2 py-3">
             <Row>
-              <Col className="mx-4">
-                <p className="text-secondary small p-0 m-0">Departure</p>
+              <Col className="mx-1">
+                <p className="text-secondary small p-0 m-0"><small>Departure</small></p>
                 <p className="mb-0">
-                  <strong>24/04/2020</strong>
+                  {new Date().toLocaleDateString()}
                 </p>
               </Col>
-              <Col>
+              <Col className="ml-1">
                 <FontAwesomeIcon className="fa-2x" icon={faCalendarAlt} />
               </Col>
             </Row>
@@ -73,7 +90,7 @@ const FilterSidebar = () => {
         </Card>
       </Col>
       <Col md={12} className="my-2">
-        <Accordion defaultActiveKey="0">
+        <Accordion >
           <Card>
             <Accordion.Toggle
               as={Card.Header}
@@ -90,8 +107,7 @@ const FilterSidebar = () => {
                     <small>Guest</small>
                   </p>
                   <p className="mb-1">
-                    {" "}
-                    <strong>2 Adults, 1 Child</strong>{" "}
+                    <strong>{adult} Adults, {child} Child</strong>
                   </p>
                 </div>
                 {chevron ? (
@@ -114,12 +130,12 @@ const FilterSidebar = () => {
                   </p>
                   <div>
                     <p className="pt-2">
-                      <Button variant="secondary">
+                      <Button variant="secondary" onClick={()=> setAdults(adult + 1)} >
                         <FontAwesomeIcon icon={faPlus} />
                       </Button>
-                      <strong className="mx-2 ">2</strong>
-                      <Button variant="secondary">
-                        <FontAwesomeIcon icon={faMinus} />
+                      <strong className="mx-2 ">{adult}</strong>
+                      <Button variant="secondary" onClick={()=> setAdults(adult - 1)} disabled={adult < 2 }>
+                        <FontAwesomeIcon icon={faMinus}  />
                       </Button>
                     </p>
                   </div>
@@ -138,11 +154,11 @@ const FilterSidebar = () => {
                   </p>
                   <div>
                     <p className="pt-2">
-                      <Button variant="secondary">
+                      <Button variant="secondary" onClick={()=> setChild(child + 1)}>
                         <FontAwesomeIcon icon={faPlus} />
                       </Button>
-                      <strong className="mx-2">2</strong>
-                      <Button variant="secondary">
+                      <strong className="mx-2">{child}</strong>
+                      <Button variant="secondary" disabled={child < 2 } onClick={()=> setChild(child - 1)}>
                         <FontAwesomeIcon icon={faMinus} />
                       </Button>
                     </p>
@@ -157,11 +173,12 @@ const FilterSidebar = () => {
             </Accordion.Collapse>
           </Card>
         </Accordion>
-        <Button variant="block btn-success my-2 py-3 rounded-1">
-          <FontAwesomeIcon icon={faSearch} /> Search
+        <Button type="submit" variant="block btn-success my-2 py-3 rounded-pill">
+          <FontAwesomeIcon icon={faSearch}  /> Search
         </Button>
       </Col>
     </Row>
+    </Form>
   );
 };
 
