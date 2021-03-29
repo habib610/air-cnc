@@ -20,7 +20,7 @@ const ExperienceScreen = ({history}) => {
     }
     return (
         <Container>
-            <h1>Explore your experience</h1>
+            <h1 className="mb-5 mt-3">Explore your experience</h1>
             {
                 loading ?
                 <Row>

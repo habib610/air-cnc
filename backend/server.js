@@ -3,6 +3,7 @@ import cors from 'cors'
 import data from './utils/data.js'
 import dotenv from 'dotenv'
 import colors from 'colors'
+import path from 'path';
 import connectionDB from './config/db.js'
 import tripsRouter from './routes/tripRoute.js'
 import userRouter from './routes/userRoute.js'

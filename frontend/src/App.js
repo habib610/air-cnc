@@ -12,6 +12,10 @@ import PaymentScreen from './Screens/PaymentScreen';
 import SearchScreen from './Screens/SearchScreen';
 import OrderDetailsScreen from './Screens/OrderDetailsScreen';
 import ExperienceScreen from './Screens/ExperienceScreen';
+import HomesCategory from './Screens/HomesCategory';
+import ProfileScreen from './Screens/ProfileScreen';
+import MyOrder from './Screens/MyOrder';
+import HelpScreen from './Screens/HelpScreen';
 
 function App() {
 
@@ -21,6 +25,7 @@ function App() {
      <main>
        <Route path="/" exact component={HomeScreen} />
        <Route path="/experience" component={ExperienceScreen} />
+       <Route path="/home" component={HomesCategory} />
        <Route path="/search/:keyword"  component={SearchScreen} />
        <Route path="/details/:id" component={DetailsScreen} />
        <Route path="/signin" component={LoginScreen} />
@@ -29,6 +34,9 @@ function App() {
        <Route path="/travelling" component={TravellingScreen} />
        <Route path="/payment-method" component={PaymentScreen} />
        <Route path="/order/:orderId" component={OrderDetailsScreen} />
+       <Route path="/profile" component={ProfileScreen} />
+       <Route path="/order" component={MyOrder} />
+       <Route path="/help" component={HelpScreen} />
      </main>
 
 

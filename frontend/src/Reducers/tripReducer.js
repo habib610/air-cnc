@@ -8,6 +8,9 @@ import {
   EXPERIENCE_TRIP_REQUEST,
   EXPERIENCE_TRIP_SUCCESS,
   EXPERIENCE_TRIP_FAIL,
+  HOMES_TRIP_REQUEST,
+  HOMES_TRIP_SUCCESS,
+  HOMES_TRIP_FAIL,
 } from "../Constants/tripConstants";
 
 export const tripReducer = (
@@ -57,6 +60,19 @@ export const experienceTripReducer = (state = {loading: true}, action) => {
     case EXPERIENCE_TRIP_SUCCESS:
       return {loading: false, experience: action.payload}
     case EXPERIENCE_TRIP_FAIL:
+      return {loading: false, error: action.payload}
+    default:
+      return state
+  }
+}
+
+export const homesTripReducer = (state = {loading: true}, action) => {
+  switch(action.type){
+    case HOMES_TRIP_REQUEST:
+      return {loading: true}
+    case HOMES_TRIP_SUCCESS:
+      return {loading: false, homes: action.payload}
+    case HOMES_TRIP_FAIL:
       return {loading: false, error: action.payload}
     default:
       return state

@@ -3,7 +3,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk'
 import { cartAddReducer } from './Reducers/cartReducer';
 import { createOrderReducer, detailsOrderReducer, orderPayReducer } from './Reducers/orderReducers';
-import {  detailTripReducer, experienceTripReducer, tripReducer } from './Reducers/tripReducer';
+import {  detailTripReducer, experienceTripReducer, homesTripReducer, tripReducer } from './Reducers/tripReducer';
 import { userMessageReducer, userRegistrationReducer, userSingInReducer } from './Reducers/userReducer';
 
 const initialState = {
@@ -32,7 +32,8 @@ const reducer = combineReducers({
     createdOrder: createOrderReducer,
     orderDetails: detailsOrderReducer,
     orderPay: orderPayReducer,
-    experienceTrip: experienceTripReducer
+    experienceTrip: experienceTripReducer,
+    homesTrip: homesTripReducer
 })
 const middleWare = [thunk]
 

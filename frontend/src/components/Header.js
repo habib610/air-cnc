@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../logo.png";
 import { Navbar, Nav, Button, Container, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userSignOutAction } from "../Actions/userAction";
 import {LinkContainer} from 'react-router-bootstrap'
@@ -49,7 +49,9 @@ const Header = () => {
                 </Button>
               
               }
-              <Button variant="btn btn-success">Search</Button>
+              <Button variant="btn btn-success">
+                <Link className="text-white" to="/search/:keyword">Search</Link>
+              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
