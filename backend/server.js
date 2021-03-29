@@ -23,13 +23,18 @@ connectionDB()
 
 
 
-app.get('/', (req, res) => {
-    res.send({
-        name: "habib",
-        id: 2000
-    })
-})
+// app.get('/', (req, res) => {
+//     res.send({
+//         name: "habib",
+//         id: 2000
+//     })
+// })
 
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+);
 
 app.use('/api/trips',tripsRouter)
 app.use('/api/users', userRouter)
