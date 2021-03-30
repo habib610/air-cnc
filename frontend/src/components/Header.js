@@ -49,6 +49,11 @@ const Header = () => {
                 </Button>
               
               }
+              {
+               userInfo  && userInfo.isAdmin &&<Button variant="warning mr-2">
+                <Link className="text-white " to="/admin">Admin Panel</Link>
+              </Button>
+              }
               <Button variant="btn btn-success">
                 <Link className="text-white" to="/search/:keyword">Search</Link>
               </Button>

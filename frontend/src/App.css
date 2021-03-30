@@ -142,3 +142,11 @@ input:focus{
       display: none;
     }
   }
+  a, a:hover{
+      text-decoration: none !important;
+  }
+  .sidebar{
+      background:  #00A799;
+      min-height: 80vh;
+      padding-top: 10px;
+  }

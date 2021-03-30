@@ -16,6 +16,7 @@ import HomesCategory from './Screens/HomesCategory';
 import ProfileScreen from './Screens/ProfileScreen';
 import MyOrder from './Screens/MyOrder';
 import HelpScreen from './Screens/HelpScreen';
+import AdminScreen from './Screens/AdminScreen';
 
 function App() {
 
@@ -37,10 +38,11 @@ function App() {
        <Route path="/profile" component={ProfileScreen} />
        <Route path="/order" component={MyOrder} />
        <Route path="/help" component={HelpScreen} />
+       <Route path="/admin" component={AdminScreen} />
      </main>
 
 
-     <footer className="text-center py-3 bg-success mt-5">
+     <footer className="text-center py-3 bg-success mt-4">
        <p className="mb-0"><small>All right Reserved &copy; Habib610</small></p>
      </footer>
     </BrowserRouter>
