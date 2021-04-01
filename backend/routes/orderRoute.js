@@ -42,6 +42,18 @@ orderRoute.get(
   })
 );
 
+orderRoute.get(
+  "/",
+  expressAsync(async (req, res) => {
+    const order = await Order.find({});
+    if (order) {
+      res.status(200).send(order);
+    } else {
+      res.status(404).send({ message: "Order Not Found" });
+    }
+  })
+);
+
 orderRoute.put(
   "/:id/pay",
   isAuth,
@@ -63,5 +75,8 @@ orderRoute.put(
     }
   })
 );
+
+
+
 
 export default orderRoute;

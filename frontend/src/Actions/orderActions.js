@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  ALL_ORDER_FAIL,
+  ALL_ORDER_REQUEST,
+  ALL_ORDER_SUCCESS,
   CREATE_ORDER_FAIL,
   CREATE_ORDER_REQUEST,
   CREATE_ORDER_SUCCESS,
@@ -85,4 +88,18 @@ export const orderPayAction = (id, paymentResult) => async (
   }
 };
 
-
+export const getListOrderAction = ()=> async(dispatch )=> {
+  dispatch({type: ALL_ORDER_REQUEST})
+  try {
+    const {data} = await axios.get('/api/order')
+    dispatch({type: ALL_ORDER_SUCCESS, payload: data})
+  } catch (error) {
+    dispatch({
+      type: ALL_ORDER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+}
