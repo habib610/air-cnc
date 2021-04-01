@@ -79,7 +79,7 @@ const { success, error, message} = uploadTrip
              uploadTrip.error && <Message variant="danger">{error}</Message>
             }
             
-          <h3 className="text-success my-3">Upload A New Product</h3>
+          <h3 className="font-weight-bold text-center my-2">Upload A New Trip</h3>
           <Form onSubmit={handleSubmit}>
 
           <Form.Group controlId='name'>

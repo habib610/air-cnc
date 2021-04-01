@@ -1,7 +1,7 @@
 import express from "express";
 import expressAsync from "express-async-handler";
 import Order from "../models/orderModel.js";
-import { isAuth } from "../utils/utils.js";
+import { isAdmin, isAuth } from "../utils/utils.js";
 
 const orderRoute = express.Router();
 
@@ -76,6 +76,23 @@ orderRoute.put(
   })
 );
 
+
+orderRoute.put(
+  "/:id/update",
+  isAuth,
+  isAdmin,
+  expressAsync(async (req, res) => {
+    const order = await Order.findById(req.params.id);
+
+    if (order) {
+      order.isConfirmed = true;
+      const updateOrder = await order.save();
+      res.status(200).send({ message: "Order Paid", order: updateOrder });
+    } else {
+      res.status(404).send({ message: "Order Not Found" });
+    }
+  })
+);
 
 
 

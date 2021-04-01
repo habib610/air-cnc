@@ -54,7 +54,7 @@ export const homesAction = () => async (dispatch) => {
 
 
 export const uploadTripAction = (trip) => async(dispatch, getState)=> {
-    console.log(trip)
+
     dispatch({type: UPLOAD_TRIP_REQUEST})
     try {
         const {

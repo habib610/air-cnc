@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk'
 import { cartAddReducer } from './Reducers/cartReducer';
-import { createOrderReducer, detailsOrderReducer, getListOrderReducer, orderPayReducer } from './Reducers/orderReducers';
+import { confirmOrderReducer, createOrderReducer, detailsOrderReducer, getListOrderReducer, orderPayReducer } from './Reducers/orderReducers';
 import {  detailTripReducer, experienceTripReducer, homesTripReducer, tripReducer, uploadTripReducer } from './Reducers/tripReducer';
 import { userMessageReducer, userRegistrationReducer, userSingInReducer } from './Reducers/userReducer';
 
@@ -35,7 +35,8 @@ const reducer = combineReducers({
     experienceTrip: experienceTripReducer,
     homesTrip: homesTripReducer,
     uploadTrip: uploadTripReducer,
-    listOrder: getListOrderReducer
+    listOrder: getListOrderReducer,
+    confirmOrder: confirmOrderReducer
 })
 const middleWare = [thunk]
 

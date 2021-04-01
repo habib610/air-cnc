@@ -31,13 +31,12 @@ const AdminScreen = ({history}) => {
                         <Link to="/admin/user"><Button variant="success mb-1 btn-block">All User List</Button></Link> 
                         </Col>
                     </Row>
-                    
-                    
+
                 </Col>
                 <Col md={10}>
+                    <Route path="/admin" exact component={AllOrderList} />
                     <Route path="/admin/upload"  component={UploadProduct} />
-                    <Route path="/admin" component={AllOrderList} />
-                    <Route path="/order/:orderId" component={OrderDetailsScreen} />
+                    <Route path="/admin/order/:orderId" component={OrderDetailsScreen} />
                 </Col>
             </Row>
         </Container>

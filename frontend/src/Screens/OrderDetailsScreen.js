@@ -1,14 +1,29 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Alert, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
+import {
+  Alert,
+  Button,
+  Card,
+  Col,
+  Container,
+  ListGroup,
+  Row,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { detailsOrderAction, orderPayAction } from "../Actions/orderActions";
+import { confirmOrderAction, detailsOrderAction, orderPayAction } from "../Actions/orderActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { PayPalButton } from "react-paypal-button-v2";
-import { ORDER_PAY_RESET } from "../Constants/orderConstant";
+import { CONFIRM_ORDER_RESET, ORDER_PAY_RESET } from "../Constants/orderConstant";
 
-const OrderDetailsScreen = ({ match }) => {
+const OrderDetailsScreen = ({ match, history }) => {
+  const userSignIn = useSelector((state) => state.userSignIn);
+  const { userInfo } = userSignIn;
+  useEffect(() => {
+    if (!userInfo.email) {
+      history.push("/signin");
+    }
+  }, [userInfo, history]);
   const [sdkReady, setSdkReady] = useState(false);
   const orderId = match.params.orderId;
   const dispatch = useDispatch();
@@ -21,6 +36,14 @@ const OrderDetailsScreen = ({ match }) => {
     success: successPay,
     error: errorPay,
   } = orderPay;
+
+  const confirmOrder = useSelector((state) => state.confirmOrder);
+  const {
+    loading: confirmLoading,
+    success: confirmSuccess,
+    error: confirmError,
+  } = confirmOrder;
+
   useEffect(() => {
     const addPayPalScript = async () => {
       const { data } = await axios.get("/api/config/paypal");
@@ -35,6 +58,7 @@ const OrderDetailsScreen = ({ match }) => {
     };
     if (!order || successPay || (order && order._id !== orderId)) {
       dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: CONFIRM_ORDER_RESET });
       dispatch(detailsOrderAction(orderId));
     } else {
       if (!order.isPaid) {
@@ -50,6 +74,17 @@ const OrderDetailsScreen = ({ match }) => {
   const successPaymentHandler = (paymentResult) => {
     dispatch(orderPayAction(orderId, paymentResult));
   };
+
+
+  const confirmOrderHandler = ()=> {
+    // dispatch confirm order
+    dispatch(confirmOrderAction(orderId))
+  }
+  useEffect(()=> {
+    if(confirmOrder && confirmOrder.success) {
+      window.location.reload();
+    }
+  }, [confirmOrder])
   return (
     <Container>
       <h1 className="mb-2">Order Details</h1>
@@ -146,6 +181,21 @@ const OrderDetailsScreen = ({ match }) => {
                   </ListGroup.Item>
                 </ListGroup>
               )}
+
+              <ListGroup>
+                <ListGroup.Item>
+                  {order.isConfirmed && (
+                    <Alert variant="success">Confirmed</Alert>
+                  )}
+                  {userInfo.isAdmin && !order.isConfirmed && order.isPaid && (
+                    <Button variant="warning py-2 btn-block" onClick={confirmOrderHandler} >
+                      Confirm Order
+                    </Button>
+                  )}
+                  {confirmError && <Message variant="danger">{confirmError}</Message>}
+                    {confirmLoading && <Loader />}
+                </ListGroup.Item>
+              </ListGroup>
             </Col>
           </Row>
         </>

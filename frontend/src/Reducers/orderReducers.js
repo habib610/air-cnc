@@ -1,4 +1,4 @@
-import { ALL_ORDER_FAIL, ALL_ORDER_REQUEST, ALL_ORDER_SUCCESS, CREATE_ORDER_FAIL, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, ORDER_DETAILS_FAIL, ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS, ORDER_PAY_FAIL, ORDER_PAY_REQUEST, ORDER_PAY_RESET, ORDER_PAY_SUCCESS} from "../Constants/orderConstant";
+import { ALL_ORDER_FAIL, ALL_ORDER_REQUEST, ALL_ORDER_SUCCESS, CONFIRM_ORDER_FAIL, CONFIRM_ORDER_REQUEST, CONFIRM_ORDER_RESET, CONFIRM_ORDER_SUCCESS, CREATE_ORDER_FAIL, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, ORDER_DETAILS_FAIL, ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS, ORDER_PAY_FAIL, ORDER_PAY_REQUEST, ORDER_PAY_RESET, ORDER_PAY_SUCCESS} from "../Constants/orderConstant";
 
 
 export const createOrderReducer = (state = {}, action)=> {
@@ -56,5 +56,20 @@ export const getListOrderReducer = (state = { loading: true }, action)=> {
             return { loading: false, error: action.payload }
         default:
             return state
+    }
+}
+
+export const confirmOrderReducer = (state = {}, action)=> {
+    switch (action.type) {
+        case CONFIRM_ORDER_REQUEST:
+            return {loading: true}
+        case CONFIRM_ORDER_SUCCESS:
+            return {loading: false, success: true}
+        case CONFIRM_ORDER_FAIL:
+            return {loading: false, error: action.payload}
+        case CONFIRM_ORDER_RESET:
+            return {}
+        default:
+           return state
     }
 }

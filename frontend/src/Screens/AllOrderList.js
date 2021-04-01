@@ -65,7 +65,7 @@ const AllOrderList = ({ history }) => {
                         <td>
                           <Button
                             variant={
-                              item.isConfirm
+                              item.isConfirmed
                                 ? "success btn-block"
                                 : "danger btn-block"
                             }
@@ -74,7 +74,7 @@ const AllOrderList = ({ history }) => {
                           </Button>
                         </td>
                         <td>
-                            <Link to={`/order/${item._id}`}><Button
+                            <Link to={`/admin/order/${item._id}`}><Button
                           variant="secondary btn-block">Details</Button></Link>
 
                         </td>
