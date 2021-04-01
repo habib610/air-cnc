@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../logo.png";
 import { Navbar, Nav, Button, Container, NavDropdown } from "react-bootstrap";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userSignOutAction } from "../Actions/userAction";
 import {LinkContainer} from 'react-router-bootstrap'
@@ -50,9 +50,10 @@ const Header = () => {
               
               }
               {
-               userInfo  && userInfo.isAdmin &&<Button variant="warning mr-2">
-                <Link className="text-white " to="/admin">Admin Panel</Link>
-              </Button>
+               userInfo  && userInfo.isAdmin &&
+              <Link className="text-white" to="/admin"><Button variant="warning mr-2 py-2">
+                Admin Panel
+              </Button></Link> 
               }
               <Button variant="btn btn-success">
                 <Link className="text-white" to="/search/:keyword">Search</Link>
