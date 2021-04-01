@@ -75,6 +75,7 @@ tripsRouter.get(
   })
 );
 
+
 tripsRouter.post('/', isAuth, isAdmin, expressAsyncHandler(async(req, res)=> {
   const {name, total, category, description, perPerson, place, thumbnail, location, numReviews, rating, guestCapacity, bedrooms, beds, baths, cleaner, frontView, innerView, guideThumbnail, superHost   } = await req.body
 

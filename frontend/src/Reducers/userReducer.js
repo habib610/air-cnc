@@ -1,4 +1,4 @@
-import { USER_MESSAGE, USER_REGISTRATION_FAIL, USER_REGISTRATION_REQUEST, USER_REGISTRATION_SUCCESS, USER_SIGN_IN_FAIL, USER_SIGN_IN_REQUEST, USER_SIGN_IN_SUCCESS, USER_SIGN_OUT } from "../Constants/userConstant";
+import { ORDER_MINE_FAIL, ORDER_MINE_REQUEST, ORDER_MINE_SUCCESS, USER_MESSAGE, USER_REGISTRATION_FAIL, USER_REGISTRATION_REQUEST, USER_REGISTRATION_SUCCESS, USER_SIGN_IN_FAIL, USER_SIGN_IN_REQUEST, USER_SIGN_IN_SUCCESS, USER_SIGN_OUT } from "../Constants/userConstant";
 
 export const userSingInReducer = (state = {userInfo: {}, loading: true}, action) => {
     switch(action.type) {
@@ -36,5 +36,18 @@ export const userMessageReducer = (state = {}, action) => {
             }
         default: 
         return state
+    }
+}
+
+export const getMyOrderReducer = (state = {loading: true}, action) => {
+    switch (action.type) {
+        case ORDER_MINE_REQUEST:
+            return {loading: true}
+        case ORDER_MINE_SUCCESS:
+            return {loading: false, orderMine: action.payload}
+        case ORDER_MINE_FAIL:
+            return {loading: false, error: action.payload}
+        default:
+            return state
     }
 }

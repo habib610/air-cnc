@@ -77,6 +77,27 @@ orderRoute.put(
 );
 
 
+
+orderRoute.get(
+  "/mine/:id",
+  isAuth,
+  expressAsync(async (req, res) => {
+    const id = await req.params.id;
+   
+    const singleTrip = await Order.find({user: id})
+   
+
+
+    if(singleTrip.length !== 0){
+      res.status(200).json(singleTrip)
+    }
+    else{
+      res.status(404).send({message: "You Don't Have any Order"})
+    }
+  })
+);
+
+
 orderRoute.put(
   "/:id/update",
   isAuth,

@@ -36,7 +36,7 @@ function App() {
        <Route path="/payment-method" component={PaymentScreen} />
        <Route path="/order/:orderId" component={OrderDetailsScreen} />
        <Route path="/profile" component={ProfileScreen} />
-       <Route path="/order/mine" component={MyOrder} />
+       <Route path="/ordermine" component={MyOrder} />
        <Route path="/help" component={HelpScreen} />
        <Route path="/admin" component={AdminScreen} />
      </main>

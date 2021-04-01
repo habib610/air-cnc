@@ -37,16 +37,16 @@ const Header = () => {
                   <LinkContainer to="/profile">
                   <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to="/order">
+                  <LinkContainer to="/ordermine">
                   <NavDropdown.Item>My Order</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={handleSignOut}>SignOut</NavDropdown.Item>
                 </NavDropdown>
               :
-                <Button variant="btn btn-secondary mx-2">
-                  <Link to="/signin">Login</Link>
-                </Button>
+                <Link to="/signin"> <Button variant="btn btn-secondary mx-2">
+                 Login
+                </Button></Link>
               
               }
               {

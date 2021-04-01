@@ -1,4 +1,7 @@
 import {
+  ORDER_MINE_FAIL,
+  ORDER_MINE_REQUEST,
+  ORDER_MINE_SUCCESS,
   USER_MESSAGE,
   USER_REGISTRATION_FAIL,
   USER_REGISTRATION_REQUEST,
@@ -58,4 +61,28 @@ export const userSignOutAction = () => (dispatch, getState)=> {
 export const messageUserAction = (message) => (dispatch, getState) => {
   dispatch({type: USER_MESSAGE, payload: message})
   localStorage.setItem('userMessage', JSON.stringify(getState().messageUser.userMessage))
+}
+
+
+export const getMyOrderList = (id) => async(dispatch, getState)=> {
+  dispatch({type: ORDER_MINE_REQUEST})
+  try {
+    const {
+      userSignIn: { userInfo },
+    } = getState();
+    const {data} = await axios.get(`/api/order/mine/${id}`,
+    { 
+      headers: {
+      Authorization: `Bearer ${userInfo.token}`,
+    }
+  })
+  dispatch({type: ORDER_MINE_SUCCESS, payload: data})
+  } catch (error) {
+    dispatch({type: ORDER_MINE_FAIL,
+      payload:
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message,
+    })
+  }
 }
