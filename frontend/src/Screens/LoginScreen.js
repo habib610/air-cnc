@@ -3,6 +3,7 @@ import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux'
 import { userSingInAction } from "../Actions/userAction";
+import { Helmet } from "react-helmet";
 const LoginScreen = ({location, history}) => {
 
   const [email, setEmail] = useState('')
@@ -27,6 +28,9 @@ if(userInfo && userInfo.email) {
   }
   return (
     <Container>
+      <Helmet>
+            <title>SING IN</title>
+          </Helmet>
       <Row>
         <Col md={4} className="offset-md-4 my-5 p-3 border">
             <h3 className="text-center text-dark">Log In</h3>

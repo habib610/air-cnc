@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { Alert, Button, Col, Container, Row, Table } from "react-bootstrap";
+import {  Button, Col, Container, Row, Table } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getListOrderAction } from "../Actions/orderActions";
@@ -26,6 +27,9 @@ const AllOrderList = ({ history }) => {
 
   return (
     <Container fluid>
+         <Helmet>
+            <title>ALL ORDER</title>
+          </Helmet>
       <h1 className="font-weight-bold text-center my-2">All Order List</h1>
       <Row>
         <Col md={12}>
@@ -70,7 +74,7 @@ const AllOrderList = ({ history }) => {
                                 : "danger btn-block"
                             }
                           >
-                            {item.isConfirmed ? "Confirmed" : "Not Confirm"}
+                            {item.isConfirmed ? "Confirmed" : "Pending"}
                           </Button>
                         </td>
                         <td>

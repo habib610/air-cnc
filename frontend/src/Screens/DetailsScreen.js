@@ -26,6 +26,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import 'react-calendar/dist/Calendar.css';
 import { cartAddAction } from "../Actions/cartAction";
+import { Helmet } from "react-helmet";
 
 
 const DetailsScreen = ({ match, history }) => {
@@ -52,6 +53,9 @@ const handleReserved = () => {
 
   return (
     <Container fluid>
+      <Helmet>
+            <title>DETAILS TRIP</title>
+          </Helmet>
       {loading ? (
         <Loader />
       ) : error ? (

@@ -5,6 +5,7 @@ import Loader from "../components/Loader";
 import { homesAction } from "../Actions/tripActions";
 import Message from "../components/Message";
 import Rating from "../components/Rating";
+import { Helmet } from "react-helmet";
 
 const HomesCategory = ({ history }) => {
   const dispatch = useDispatch();
@@ -19,7 +20,10 @@ const HomesCategory = ({ history }) => {
   };
   return (
     <Container>
-      <h1 className="mb-5 mt-3">Explore your homes</h1>
+      <Helmet>
+            <title>EXPLORE YOUR HOMES</title>
+          </Helmet>
+      <h1 className="mt-3">Explore your homes</h1>
       {loading ? (
         <Row>
           <Col md={12}>

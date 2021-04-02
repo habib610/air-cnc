@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
 import { cartAddAction } from "../Actions/cartAction";
 import { messageUserAction } from "../Actions/userAction";
+import { Helmet } from "react-helmet";
 
 const TravellingScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -77,6 +78,9 @@ const TravellingScreen = ({ history }) => {
 
   return (
     <Container>
+      <Helmet>
+            <title>READY FOR TRAVEL</title>
+          </Helmet>
       <CheckOutStep step1 step2 />
       <Row>
         <Col md={7} className="mt-5">

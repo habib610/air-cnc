@@ -5,7 +5,7 @@ const AllUserList = () => {
     return (
         <div>
             <h1 className="font-weight-bold text-center my-2">All User List</h1>
-            <Alert variant="success">Commming soon</Alert>
+            <Alert variant="success">Coming soon</Alert>
         </div>
     );
 };

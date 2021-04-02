@@ -8,6 +8,7 @@ import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux";
 import { uploadTripAction } from "../Actions/tripActions";
 import Message from "../components/Message";
+import { Helmet } from "react-helmet";
 
 const UploadProduct = () => {
     const [uploading, setUploading] = useState(false)
@@ -68,6 +69,9 @@ const { success, error, message} = uploadTrip
 
   return (
     <Container>
+      <Helmet>
+            <title>UPLOAD NEW TRIP</title>
+          </Helmet>
       <Row>
           <Col md={8} className="m-auto">
             {

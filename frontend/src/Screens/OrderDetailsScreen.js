@@ -15,6 +15,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { PayPalButton } from "react-paypal-button-v2";
 import { CONFIRM_ORDER_RESET, ORDER_PAY_RESET } from "../Constants/orderConstant";
+import { Helmet } from "react-helmet";
 
 const OrderDetailsScreen = ({ match, history }) => {
   const userSignIn = useSelector((state) => state.userSignIn);
@@ -87,6 +88,9 @@ const OrderDetailsScreen = ({ match, history }) => {
   }, [confirmOrder])
   return (
     <Container>
+       <Helmet>
+            <title>ORDER DETAILS</title>
+          </Helmet>
       <h1 className="mb-2">Order Details</h1>
       {loading ? (
         <Loader />

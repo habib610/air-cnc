@@ -79,7 +79,7 @@ const HomeScreen = ({ history, match }) => {
                 <h2>Homes</h2>
                 <Row className="home">
                   {homes.map((trip) => (
-                    <Col xs={12} sm={12} md={4} key={trip._id}>
+                    <Col className="mb-4" xs={12} sm={12} md={4} key={trip._id}>
                       <Card onClick={() => cardClick(trip._id)}>
                         <Card.Img variant="top" src={trip.thumbnail} />
                         <Card.Body className="p-1">

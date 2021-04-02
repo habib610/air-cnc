@@ -24,6 +24,7 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { cartAddAction } from "../Actions/cartAction";
+import { Helmet } from "react-helmet";
 
 const ReviewScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -86,6 +87,9 @@ const ReviewScreen = ({ history }) => {
 
   return (
     <Container>
+      <Helmet>
+            <title>REVIEW YOUR ORDER</title>
+          </Helmet>
       <CheckOutStep step1 />
       <Row>
         <Col md={7}>

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Alert, Button, Col, Container, Row, Table} from 'react-bootstrap'
+import { Button, Col, Container, Row, Table} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getMyOrderList } from '../Actions/userAction';
@@ -67,7 +67,7 @@ const MyOrder = ({history}) => {
                                 : "danger btn-block"
                             }
                           >
-                            {item.isConfirmed ? "Confirmed" : "Not Confirm"}
+                            {item.isConfirmed ? "Confirmed" : "Pending"}
                           </Button>
                         </td>
                         <td>
