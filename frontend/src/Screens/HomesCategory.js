@@ -31,8 +31,8 @@ const HomesCategory = ({ history }) => {
       ) : (
         <Row>
           {homes.map((trip) => (
-            <Col className="mb-4" xs={12} sm={12} md={6} lg={4} key={trip._id}>
-              <Card onClick={() => cardClick(trip._id)}>
+            <Col className="my-4" xs={12} sm={12} md={6} lg={4} key={trip._id}>
+              <Card   onClick={() => cardClick(trip._id)}>
                 <Card.Img variant="top" src={trip.thumbnail} />
                 <Card.Body className="py-0 px-2">
                   <h6 className="place">{trip.place}</h6>

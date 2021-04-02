@@ -42,7 +42,7 @@ function App() {
      </main>
 
 
-     <footer className="text-center py-3 bg-success mt-4">
+     <footer className="text-center py-3 bg-success ">
        <p className="mb-0"><small>All right Reserved &copy; Habib610</small></p>
      </footer>
     </BrowserRouter>
