@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Col, Container, Form, Row, Image, Button, Alert } from "react-bootstrap";
+import React, {  useState } from "react";
+import { Col, Container, Form, Row, Button, Alert } from "react-bootstrap";
 import guideImage from '../rowdra.jpg'
 import frontImage from '../frontView.jpeg'
 import InnerImage from '../InnerView.jpeg'
@@ -36,7 +36,7 @@ const UploadProduct = () => {
 
 const dispatch = useDispatch()
 const uploadTrip = useSelector(state => state.uploadTrip)
-const { success, error, message} = uploadTrip
+const {  error,} = uploadTrip
 
    
 

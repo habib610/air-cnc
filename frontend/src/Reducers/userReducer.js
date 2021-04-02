@@ -5,7 +5,6 @@ import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
-  USER_DETAILS_RESET,
   USER_MESSAGE,
   USER_REGISTRATION_FAIL,
   USER_REGISTRATION_REQUEST,
@@ -14,6 +13,10 @@ import {
   USER_SIGN_IN_REQUEST,
   USER_SIGN_IN_SUCCESS,
   USER_SIGN_OUT,
+  UPDATE_USER_PROFILE_REQUEST,
+  UPDATE_USER_PROFILE_SUCCESS,
+  UPDATE_USER_PROFILE_FAIL,
+  UPDATE_USER_PROFILE_RESET,
 } from "../Constants/userConstant";
 
 export const userSingInReducer = (
@@ -79,9 +82,24 @@ export const userDetailsReducer = (state = { loading: true }, action) => {
       return { loading: false, user: action.payload };
     case USER_DETAILS_FAIL:
       return { loading: false, error: action.payload };
-    case USER_DETAILS_RESET:
-      return {};
+   
     default:
       return state;
   }
 };
+
+
+export const userUpdateReducer = (state = { loading: true }, action) => {
+    switch (action.type) {
+      case UPDATE_USER_PROFILE_REQUEST:
+        return { loading: true };
+      case UPDATE_USER_PROFILE_SUCCESS:
+        return { loading: false, success: true };
+      case UPDATE_USER_PROFILE_FAIL:
+        return { loading: false, success: false, error: action.payload };
+      case UPDATE_USER_PROFILE_RESET:
+        return {};
+      default:
+        return state;
+    }
+  };

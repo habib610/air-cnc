@@ -15,7 +15,6 @@ import ExperienceScreen from './Screens/ExperienceScreen';
 import HomesCategory from './Screens/HomesCategory';
 import ProfileScreen from './Screens/ProfileScreen';
 import MyOrder from './Screens/MyOrder';
-import HelpScreen from './Screens/HelpScreen';
 import AdminScreen from './Screens/AdminScreen';
 
 function App() {
@@ -37,7 +36,6 @@ function App() {
        <Route path="/order/:orderId" component={OrderDetailsScreen} />
        <Route path="/profile" component={ProfileScreen} />
        <Route path="/ordermine" component={MyOrder} />
-       <Route path="/help" component={HelpScreen} />
        <Route path="/admin" component={AdminScreen} />
      </main>
 

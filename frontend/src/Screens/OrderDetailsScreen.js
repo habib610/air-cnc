@@ -41,7 +41,6 @@ const OrderDetailsScreen = ({ match, history }) => {
   const confirmOrder = useSelector((state) => state.confirmOrder);
   const {
     loading: confirmLoading,
-    success: confirmSuccess,
     error: confirmError,
   } = confirmOrder;
 

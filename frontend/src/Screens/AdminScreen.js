@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import AllOrderList from './AllOrderList';
@@ -19,6 +20,9 @@ const AdminScreen = ({history}) => {
     return (
         <BrowserRouter>
         <Container fluid>
+            <Helmet>
+                <title>ADMIN PANEL</title>
+            </Helmet>
             <Row>
                 <Col md={2} className="sidebar" >
                     <Row>
@@ -29,7 +33,10 @@ const AdminScreen = ({history}) => {
                            <Link to="/admin"><Button variant="success btn-block mb-1">All Order List</Button></Link> 
                         </Col>
                         <Col md={12}>
-                        <Link to="/admin/alluser"><Button variant="success mb-1 btn-block">All User List</Button></Link> 
+                       <Button variant="success mb-1 btn-block">All User List</Button> 
+                        </Col>
+                        <Col md={12}>
+                       <Button variant="success mb-1 btn-block">All Admin List</Button> 
                         </Col>
                     </Row>
 
