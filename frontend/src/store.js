@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 import { cartAddReducer } from './Reducers/cartReducer';
 import { confirmOrderReducer, createOrderReducer, detailsOrderReducer, getListOrderReducer, orderPayReducer } from './Reducers/orderReducers';
 import {  detailTripReducer, experienceTripReducer, homesTripReducer, tripReducer, uploadTripReducer } from './Reducers/tripReducer';
-import { getMyOrderReducer, userMessageReducer, userRegistrationReducer, userSingInReducer } from './Reducers/userReducer';
+import { getMyOrderReducer, userDetailsReducer, userMessageReducer, userRegistrationReducer, userSingInReducer } from './Reducers/userReducer';
 
 const initialState = {
     userSignIn: {
@@ -37,7 +37,8 @@ const reducer = combineReducers({
     uploadTrip: uploadTripReducer,
     listOrder: getListOrderReducer,
     confirmOrder: confirmOrderReducer,
-    getMyOrder: getMyOrderReducer
+    getMyOrder: getMyOrderReducer,
+    userDetails: userDetailsReducer
 })
 const middleWare = [thunk]
 

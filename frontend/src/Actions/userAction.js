@@ -2,6 +2,9 @@ import {
   ORDER_MINE_FAIL,
   ORDER_MINE_REQUEST,
   ORDER_MINE_SUCCESS,
+  USER_DETAILS_FAIL,
+  USER_DETAILS_REQUEST,
+  USER_DETAILS_SUCCESS,
   USER_MESSAGE,
   USER_REGISTRATION_FAIL,
   USER_REGISTRATION_REQUEST,
@@ -81,6 +84,26 @@ export const getMyOrderList = (id) => async(dispatch, getState)=> {
     dispatch({type: ORDER_MINE_FAIL,
       payload:
       error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message,
+    })
+  }
+}
+
+export const getUserDetailsAction = (id)=> async(dispatch, getState)=> {
+  dispatch({type: USER_DETAILS_REQUEST})
+  try {
+    const {userSignIn: {userInfo}} = getState()
+    const {data} = await axios.get(`/api/users/${id}`, {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    })
+    dispatch({type: USER_DETAILS_SUCCESS, payload: data})
+  } catch (error) {
+    dispatch({
+      type: USER_DETAILS_FAIL,
+      payload: error.response && error.response.data.message
         ? error.response.data.message
         : error.message,
     })

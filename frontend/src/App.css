@@ -1,5 +1,5 @@
 main{
-    min-height: 75vh;
+    min-height: 80vh;
 }
 h1,h2,h3,h4,h5,h6{
     font-family: 'Poppins', sans-serif;
@@ -149,4 +149,18 @@ input:focus{
       background:  #00A799;
       min-height: 80vh;
       padding-top: 10px;
+  }
+
+  .avatar{
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      background: #2bde8c;
+      color: white;
+      font-weight: 900;
+      font-size: 5rem;
+      border-radius: 100%;
+  }
+  .align-items-center{
+      align-items: center !important;
   }

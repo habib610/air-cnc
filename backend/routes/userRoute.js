@@ -2,8 +2,21 @@ import express from 'express'
 import expressAsyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
 import bcrypt from 'bcryptjs'
-import { generateToken } from '../utils/utils.js'
+import { generateToken, isAuth } from '../utils/utils.js'
 const userRouter = express.Router()
+
+
+
+userRouter.get('/:id', isAuth, expressAsyncHandler(async(req, res)=> {
+    const user = await User.findById(req.params.id)
+    if(user){
+        res.status(200).send(user)  
+    } else {
+        res.status(404).send({message: "User not found"})
+    }
+}))
+
+
 
 userRouter.post('/registration', expressAsyncHandler(async(req, res)=> {
     const user = await User({
@@ -42,7 +55,6 @@ userRouter.post('/signin', expressAsyncHandler(async(req, res)=> {
     } else {
         res.status(500).send({message: "Invalid email or password"})
     }
-
 }))
 
 
