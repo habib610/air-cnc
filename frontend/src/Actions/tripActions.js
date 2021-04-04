@@ -1,4 +1,5 @@
 import axios from "axios"
+import { UPLOAD_TRIP_FAIL, UPLOAD_TRIP_REQUEST, UPLOAD_TRIP_SUCCESS } from "../Constants/orderConstant"
 import { DETAIL_TRIP_FAIL, DETAIL_TRIP_REQUEST, DETAIL_TRIP_SUCCESS, EXPERIENCE_TRIP_FAIL, EXPERIENCE_TRIP_REQUEST, EXPERIENCE_TRIP_SUCCESS, HOMES_TRIP_FAIL, HOMES_TRIP_REQUEST, HOMES_TRIP_SUCCESS, LIST_TRIP_FAIL, LIST_TRIP_REQUEST, LIST_TRIP_SUCCESS } from "../Constants/tripConstants"
 
 export const listTripActions = (keyword = '') => async(dispatch) => {
@@ -47,6 +48,28 @@ export const homesAction = () => async (dispatch) => {
     } catch (error) {
         dispatch({type: HOMES_TRIP_FAIL, payload: error.response && error.response.data.message  ? error.response.data.message : error.message
         
+        })
+    }
+}
+
+
+export const uploadTripAction = (trip) => async(dispatch, getState)=> {
+
+    dispatch({type: UPLOAD_TRIP_REQUEST})
+    try {
+        const {
+            userSignIn: { userInfo },
+          } = getState();
+        const {data} = await axios.post('/api/trips', trip, {
+            
+                headers: {
+                  Authorization: `Bearer ${userInfo.token}`,
+                },
+        })
+        dispatch({type: UPLOAD_TRIP_SUCCESS, payload: data})
+    } catch (error) {
+        dispatch({type: UPLOAD_TRIP_FAIL, 
+        payload: error.response && error.response.data.message  ? error.response.data.message : error.message
         })
     }
 }

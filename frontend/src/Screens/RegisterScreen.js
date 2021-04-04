@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { userRegistrationAction } from '../Actions/userAction';
@@ -36,6 +37,9 @@ const RegisterScreen = ({location, history}) => {
     },[userInfo, history, redirect])
     return (
         <Container>
+          <Helmet>
+            <title>REGISTER YOUR ACCOUNT</title>
+          </Helmet>
         <Row>
           <Col md={4} className="offset-md-4 my-5 p-3 border">
               <h3 className="text-center text-dark">Register</h3>

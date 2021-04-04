@@ -1,3 +1,4 @@
+import { UPLOAD_TRIP_FAIL, UPLOAD_TRIP_REQUEST, UPLOAD_TRIP_SUCCESS } from "../Constants/orderConstant";
 import {
   LIST_TRIP_FAIL,
   LIST_TRIP_REQUEST,
@@ -76,5 +77,18 @@ export const homesTripReducer = (state = {loading: true}, action) => {
       return {loading: false, error: action.payload}
     default:
       return state
+  }
+}
+
+export const uploadTripReducer = (state = {}, action) => {
+  switch(action.type) {
+    case UPLOAD_TRIP_REQUEST:
+      return {loading: true} 
+      case UPLOAD_TRIP_SUCCESS:
+        return {loading: false, success: true, message: action.payload} 
+      case UPLOAD_TRIP_FAIL: 
+        return {loading: false, error: action.payload}
+    default:
+    return state
   }
 }

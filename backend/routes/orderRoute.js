@@ -1,7 +1,7 @@
 import express from "express";
 import expressAsync from "express-async-handler";
 import Order from "../models/orderModel.js";
-import { isAuth } from "../utils/utils.js";
+import { isAdmin, isAuth } from "../utils/utils.js";
 
 const orderRoute = express.Router();
 
@@ -42,6 +42,18 @@ orderRoute.get(
   })
 );
 
+orderRoute.get(
+  "/",
+  expressAsync(async (req, res) => {
+    const order = await Order.find({});
+    if (order) {
+      res.status(200).send(order);
+    } else {
+      res.status(404).send({ message: "Order Not Found" });
+    }
+  })
+);
+
 orderRoute.put(
   "/:id/pay",
   isAuth,
@@ -63,5 +75,46 @@ orderRoute.put(
     }
   })
 );
+
+
+
+orderRoute.get(
+  "/mine/:id",
+  isAuth,
+  expressAsync(async (req, res) => {
+    const id = await req.params.id;
+   
+    const singleTrip = await Order.find({user: id})
+   
+
+
+    if(singleTrip.length !== 0){
+      res.status(200).json(singleTrip)
+    }
+    else{
+      res.status(404).send({message: "You Don't Have any Order"})
+    }
+  })
+);
+
+
+orderRoute.put(
+  "/:id/update",
+  isAuth,
+  isAdmin,
+  expressAsync(async (req, res) => {
+    const order = await Order.findById(req.params.id);
+
+    if (order) {
+      order.isConfirmed = true;
+      const updateOrder = await order.save();
+      res.status(200).send({ message: "Order Paid", order: updateOrder });
+    } else {
+      res.status(404).send({ message: "Order Not Found" });
+    }
+  })
+);
+
+
 
 export default orderRoute;

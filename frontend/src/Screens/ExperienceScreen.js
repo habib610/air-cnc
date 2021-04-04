@@ -5,7 +5,7 @@ import Loader from "../components/Loader";
 import { experienceAction } from '../Actions/tripActions';
 import Message from '../components/Message';
 import Rating from '../components/Rating';
-
+import {Helmet} from "react-helmet";
 
 const ExperienceScreen = ({history}) => {
     const dispatch = useDispatch()
@@ -20,7 +20,10 @@ const ExperienceScreen = ({history}) => {
     }
     return (
         <Container>
-            <h1 className="mb-5 mt-3">Explore your experience</h1>
+          <Helmet>
+            <title>EXPLORE EXPERIENCES</title>
+          </Helmet>
+            <h1 className="my-3">Explore your experience</h1>
             {
                 loading ?
                 <Row>

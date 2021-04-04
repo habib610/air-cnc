@@ -6,6 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { listTripActions } from "../Actions/tripActions";
 import Loader from "../components/Loader";
@@ -40,6 +41,9 @@ const SearchScreen = ({ history, match }) => {
   const { loading, homes, experiences, error } = listTrip;
   return (
     <Container>
+      <Helmet>
+            <title>SEARCH FOR TRIP</title>
+          </Helmet>
       <div className="myPosition ">
         <div>
           <input onChange={(e) => setNextKeyword(e.target.value)} type="text" />{" "}

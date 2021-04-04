@@ -8,6 +8,7 @@ import connectionDB from './config/db.js'
 import tripsRouter from './routes/tripRoute.js'
 import userRouter from './routes/userRoute.js'
 import orderRoute from './routes/orderRoute.js'
+import uploadRouter from './routes/uploadRoute.js'
 
 
 dotenv.config()
@@ -30,11 +31,7 @@ connectionDB()
 //     })
 // })
 
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, '/frontend/build')));
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
-);
+
 
 app.use('/api/trips',tripsRouter)
 app.use('/api/users', userRouter)
@@ -42,6 +39,11 @@ app.use('/api/order', orderRoute)
 app.get('/api/config/paypal', (req, res)=> {
     res.send(process.env.PAYPAL_CLIENT_ID)
 })
+
+app.use('/api/upload', uploadRouter)
+
+const __dirname = path.resolve()
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 app.listen(PORT, ()=> {
     console.log(`listening to port ${PORT}`.brightYellow.underline.bold)
 })

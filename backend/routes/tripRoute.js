@@ -2,6 +2,7 @@ import express from "express";
 import Trips from "../models/tripModel.js";
 import expressAsyncHandler from "express-async-handler";
 import data from "../utils/data.js";
+import { isAdmin, isAuth } from "../utils/utils.js";
 
 const tripsRouter = express.Router();
 
@@ -73,5 +74,19 @@ tripsRouter.get(
     }
   })
 );
+
+
+tripsRouter.post('/', isAuth, isAdmin, expressAsyncHandler(async(req, res)=> {
+  const {name, total, category, description, perPerson, place, thumbnail, location, numReviews, rating, guestCapacity, bedrooms, beds, baths, cleaner, frontView, innerView, guideThumbnail, superHost   } = await req.body
+
+
+ 
+  const newTrip = await Trips({
+    name, total, category, description, perPerson, place, thumbnail, location, numReviews, rating, guestCapacity, bedrooms, beds, baths, cleaner, frontView, innerView, guideThumbnail, superHost
+  })
+  const createdTrip = await newTrip.save()
+  res.status(200).send("New Trip Created Successfully")
+}))
+
 
 export default tripsRouter;

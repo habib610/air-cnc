@@ -23,6 +23,7 @@ import paypal from "../paypal.png";
 import { createOrder } from "../Actions/orderActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import { Helmet } from "react-helmet";
 
 const PaymentScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -89,6 +90,9 @@ const PaymentScreen = ({ history }) => {
   }, [history, success, orderItems])
   return (
     <Container>
+      <Helmet>
+            <title>PAYMENT</title>
+          </Helmet>
       <CheckOutStep step1 step2 step3 />
       <Row>
         <Col md={7} className="mt-5">

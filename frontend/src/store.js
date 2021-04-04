@@ -2,9 +2,9 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk'
 import { cartAddReducer } from './Reducers/cartReducer';
-import { createOrderReducer, detailsOrderReducer, orderPayReducer } from './Reducers/orderReducers';
-import {  detailTripReducer, experienceTripReducer, homesTripReducer, tripReducer } from './Reducers/tripReducer';
-import { userMessageReducer, userRegistrationReducer, userSingInReducer } from './Reducers/userReducer';
+import { confirmOrderReducer, createOrderReducer, detailsOrderReducer, getListOrderReducer, orderPayReducer } from './Reducers/orderReducers';
+import {  detailTripReducer, experienceTripReducer, homesTripReducer, tripReducer, uploadTripReducer } from './Reducers/tripReducer';
+import { getMyOrderReducer, userDetailsReducer, userMessageReducer, userRegistrationReducer, userSingInReducer, userUpdateReducer } from './Reducers/userReducer';
 
 const initialState = {
     userSignIn: {
@@ -33,7 +33,13 @@ const reducer = combineReducers({
     orderDetails: detailsOrderReducer,
     orderPay: orderPayReducer,
     experienceTrip: experienceTripReducer,
-    homesTrip: homesTripReducer
+    homesTrip: homesTripReducer,
+    uploadTrip: uploadTripReducer,
+    listOrder: getListOrderReducer,
+    confirmOrder: confirmOrderReducer,
+    getMyOrder: getMyOrderReducer,
+    userDetails: userDetailsReducer,
+    userUpdate: userUpdateReducer
 })
 const middleWare = [thunk]
 
